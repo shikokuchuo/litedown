@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en-US">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="generator" content="litedown 0.11.7">
+<meta name="generator" content="litedown 0.11.22">
 <title>litedown: R Markdown Reimagined</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/default.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/article.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/copy-button.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/heading-anchor.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/pages.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/book.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/book-litedown.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/key-buttons.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/callout.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/tabsets.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/prism-xcode.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/article.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/copy-button.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/heading-anchor.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/pages.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/book.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/book-litedown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/key-buttons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/callout.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/tabsets.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/prism-xcode.min.css">
 </head>
 <body>
-<div class="frontmatter">
+<header class="frontmatter">
 <div class="title"><h1>litedown: R Markdown Reimagined</h1></div>
 <div class="author"><h2>Yihui Xie</h2></div>
-<div class="date"><h3>2026-10-05</h3></div>
-</div>
+<div class="date"><h3>2026-10-30</h3></div>
+</header>
+<main>
 <div class="">
-<div id="TOC">
+<nav id="TOC">
 <ul class="numbered">
 <li><a href="#chp:preface">Preface</a>
 <ul>
@@ -126,7 +127,7 @@
 <ul>
 <li><a href="#sec:the-markdown-engine"><span class="section-number">2.6.1</span> The Markdown engine</a></li>
 <li><a href="#sec:engine-css"><span class="section-number">2.6.2</span> The CSS/JS engines</a></li>
-<li><a href="#sec:the-mermaid-engine"><span class="section-number">2.6.3</span> The Mermaid engine</a></li>
+<li><a href="#sec:engine-diagram"><span class="section-number">2.6.3</span> The Pele and Mermaid engines</a></li>
 <li><a href="#sec:the-embed-engine"><span class="section-number">2.6.4</span> The embed engine</a></li>
 <li><a href="#sec:the-exec-engine"><span class="section-number">2.6.5</span> The <code>exec</code> engine</a></li>
 </ul>
@@ -202,7 +203,7 @@
 <ul>
 <li><a href="#sec:meta-css"><span class="section-number">4.3.2.1</span> The <code>css</code> variable</a></li>
 <li><a href="#sec:the-js-variable"><span class="section-number">4.3.2.2</span> The <code>js</code> variable</a></li>
-<li><a href="#sec:the-body-class-variable"><span class="section-number">4.3.2.3</span> The <code>body-class</code> variable</a></li>
+<li><a href="#sec:the-body-tag-and-body-class-variables"><span class="section-number">4.3.2.3</span> The <code>body-tag</code> and <code>body-class</code> variables</a></li>
 <li><a href="#sec:the-lang-variable"><span class="section-number">4.3.2.4</span> The <code>lang</code> variable</a></li>
 <li><a href="#sec:the-plain-title-variable"><span class="section-number">4.3.2.5</span> The <code>plain-title</code> variable</a></li>
 <li><a href="#sec:the-generator-variable"><span class="section-number">4.3.2.6</span> The <code>generator</code> variable</a></li>
@@ -221,58 +222,75 @@
 <li><a href="#chp:assets"><span class="section-number main-number">5</span> CSS/JS assets</a>
 <ul>
 <li><a href="#sec:asset-reference"><span class="section-number">5.1</span> A quick reference</a></li>
-<li><a href="#sec:default"><span class="section-number">5.2</span> The default CSS</a></li>
-<li><a href="#sec:copy-button"><span class="section-number">5.3</span> Copy buttons</a></li>
-<li><a href="#sec:tabsets"><span class="section-number">5.4</span> Tabsets</a>
+<li><a href="#sec:default-css"><span class="section-number">5.2</span> The default CSS</a></li>
+<li><a href="#sec:custom-assets"><span class="section-number">5.3</span> Custom CSS/JS</a>
 <ul>
-<li><a href="#sec:from-a-bullet-list"><span class="section-number">5.4.1</span> From a bullet list</a></li>
-<li><a href="#sec:from-sections"><span class="section-number">5.4.2</span> From sections</a></li>
+<li><a href="#sec:add-a-few-rules-to-a-document"><span class="section-number">5.3.1</span> Add a few rules to a document</a></li>
+<li><a href="#sec:css-variables"><span class="section-number">5.3.2</span> Customize via CSS variables</a></li>
+<li><a href="#sec:use-css-js-from-the-web"><span class="section-number">5.3.3</span> Use CSS/JS from the web</a></li>
+<li><a href="#sec:global-css"><span class="section-number">5.3.4</span> Apply the styles to all pages</a></li>
 </ul>
 </li>
-<li><a href="#sec:fold-details"><span class="section-number">5.5</span> Code folding</a></li>
-<li><a href="#sec:callout"><span class="section-number">5.6</span> Callout blocks</a>
+<li><a href="#sec:copy-button"><span class="section-number">5.4</span> Copy buttons</a></li>
+<li><a href="#sec:tabsets"><span class="section-number">5.5</span> Tabsets</a>
 <ul>
-<li><a href="#sec:built-in-callouts"><span class="section-number">5.6.1</span> Built-in callouts</a></li>
-<li><a href="#sec:customizing-callouts"><span class="section-number">5.6.2</span> Customizing callouts</a></li>
+<li><a href="#sec:from-a-bullet-list"><span class="section-number">5.5.1</span> From a bullet list</a></li>
+<li><a href="#sec:from-sections"><span class="section-number">5.5.2</span> From sections</a></li>
 </ul>
 </li>
-<li><a href="#sec:heading-anchor"><span class="section-number">5.7</span> Add anchor links to headings</a></li>
-<li><a href="#sec:article"><span class="section-number">5.8</span> HTML articles</a>
+<li><a href="#sec:fold-details"><span class="section-number">5.6</span> Code folding</a></li>
+<li><a href="#sec:callout"><span class="section-number">5.7</span> Callout blocks</a>
 <ul>
-<li><a href="#sec:the-overall-style"><span class="section-number">5.8.1</span> The overall style</a></li>
-<li><a href="#sec:side-elements"><span class="section-number">5.8.2</span> Side elements</a>
-<ul>
-<li><a href="#sec:the-toc"><span class="section-number">5.8.2.1</span> The TOC</a></li>
-<li><a href="#sec:footnotes-on-the-side"><span class="section-number">5.8.2.2</span> Footnotes on the side</a></li>
-<li><a href="#sec:arbitrary-sidenotes"><span class="section-number">5.8.2.3</span> Arbitrary sidenotes</a></li>
+<li><a href="#sec:built-in-callouts"><span class="section-number">5.7.1</span> Built-in callouts</a></li>
+<li><a href="#sec:customizing-callouts"><span class="section-number">5.7.2</span> Customizing callouts</a></li>
 </ul>
 </li>
-<li><a href="#sec:body-elements"><span class="section-number">5.8.3</span> Body elements</a>
+<li><a href="#sec:heading-anchor"><span class="section-number">5.8</span> Add anchor links to headings</a></li>
+<li><a href="#sec:article"><span class="section-number">5.9</span> HTML articles</a>
 <ul>
-<li><a href="#sec:full-width-elements"><span class="section-number">5.8.3.1</span> Full-width elements</a></li>
-<li><a href="#sec:left-right-quotes"><span class="section-number">5.8.3.2</span> Left/right quotes</a></li>
-<li><a href="#sec:margin-embedding"><span class="section-number">5.8.3.3</span> Margin embedding</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec:book"><span class="section-number">5.9</span> HTML books</a></li>
-<li><a href="#sec:chapter-toc"><span class="section-number">5.10</span> Chapter TOC</a></li>
-<li><a href="#sec:toc-highlight"><span class="section-number">5.11</span> Highlight TOC items</a></li>
-<li><a href="#sec:pages"><span class="section-number">5.12</span> Paged HTML</a></li>
-<li><a href="#sec:snap"><span class="section-number">5.13</span> HTML slides</a>
+<li><a href="#sec:the-overall-style"><span class="section-number">5.9.1</span> The overall style</a></li>
+<li><a href="#sec:side-elements"><span class="section-number">5.9.2</span> Side elements</a>
 <ul>
-<li><a href="#sec:creating-slides"><span class="section-number">5.13.1</span> Creating slides</a></li>
-<li><a href="#sec:navigating-and-presenting"><span class="section-number">5.13.2</span> Navigating and presenting</a></li>
-<li><a href="#sec:styling-slides"><span class="section-number">5.13.3</span> Styling slides</a></li>
-<li><a href="#sec:printing-and-themes"><span class="section-number">5.13.4</span> Printing and themes</a></li>
+<li><a href="#sec:the-toc"><span class="section-number">5.9.2.1</span> The TOC</a></li>
+<li><a href="#sec:footnotes-on-the-side"><span class="section-number">5.9.2.2</span> Footnotes on the side</a></li>
+<li><a href="#sec:arbitrary-sidenotes"><span class="section-number">5.9.2.3</span> Arbitrary sidenotes</a></li>
 </ul>
 </li>
-<li><a href="#sec:right-quote"><span class="section-number">5.14</span> Right-align a quote footer</a></li>
-<li><a href="#sec:center-img"><span class="section-number">5.15</span> Center images</a></li>
-<li><a href="#sec:external-link"><span class="section-number">5.16</span> Open external links in new windows</a></li>
-<li><a href="#sec:key-buttons"><span class="section-number">5.17</span> Style keyboard shortcuts</a></li>
-<li><a href="#sec:arbitrary-assets"><span class="section-number">5.18</span> Include arbitrary CSS/JS</a></li>
+<li><a href="#sec:body-elements"><span class="section-number">5.9.3</span> Body elements</a>
+<ul>
+<li><a href="#sec:full-width-elements"><span class="section-number">5.9.3.1</span> Full-width elements</a></li>
+<li><a href="#sec:left-right-quotes"><span class="section-number">5.9.3.2</span> Left/right quotes</a></li>
+<li><a href="#sec:margin-embedding"><span class="section-number">5.9.3.3</span> Margin embedding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec:book"><span class="section-number">5.10</span> HTML books</a></li>
+<li><a href="#sec:chapter-toc"><span class="section-number">5.11</span> Chapter TOC</a></li>
+<li><a href="#sec:toc-highlight"><span class="section-number">5.12</span> Highlight TOC items</a></li>
+<li><a href="#sec:nav-highlight"><span class="section-number">5.13</span> Highlight the current page in navigation</a></li>
+<li><a href="#sec:pages"><span class="section-number">5.14</span> Paged HTML</a>
+<ul>
+<li><a href="#sec:trigger-pagination"><span class="section-number">5.14.1</span> Trigger pagination</a></li>
+<li><a href="#sec:pages-events"><span class="section-number">5.14.2</span> Run code before and after pagination</a></li>
+<li><a href="#sec:how-elements-are-put-on-pages"><span class="section-number">5.14.3</span> How elements are put on pages</a></li>
+<li><a href="#sec:page-layout-and-styles"><span class="section-number">5.14.4</span> Page layout and styles</a></li>
+<li><a href="#sec:pages-other"><span class="section-number">5.14.5</span> Paginate other HTML pages</a></li>
+<li><a href="#sec:pages-troubleshooting"><span class="section-number">5.14.6</span> Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#sec:snap"><span class="section-number">5.15</span> HTML slides</a>
+<ul>
+<li><a href="#sec:creating-slides"><span class="section-number">5.15.1</span> Creating slides</a></li>
+<li><a href="#sec:navigating-and-presenting"><span class="section-number">5.15.2</span> Navigating and presenting</a></li>
+<li><a href="#sec:styling-slides"><span class="section-number">5.15.3</span> Styling slides</a></li>
+<li><a href="#sec:printing-and-themes"><span class="section-number">5.15.4</span> Printing and themes</a></li>
+</ul>
+</li>
+<li><a href="#sec:right-quote"><span class="section-number">5.16</span> Right-align a quote footer</a></li>
+<li><a href="#sec:center-img"><span class="section-number">5.17</span> Center images</a></li>
+<li><a href="#sec:external-link"><span class="section-number">5.18</span> Open external links in new windows</a></li>
+<li><a href="#sec:key-buttons"><span class="section-number">5.19</span> Style keyboard shortcuts</a></li>
 </ul>
 </li>
 <li><a href="#chp:widgets"><span class="section-number main-number">6</span> HTML Widgets</a>
@@ -316,12 +334,13 @@
 <li><a href="#sec:pkg-site"><span class="section-number">8.4</span> R package documentation</a>
 <ul>
 <li><a href="#sec:the-pkg-helper-functions"><span class="section-number">8.4.1</span> The <code>pkg_*()</code> helper functions</a></li>
-<li><a href="#sec:pkg-site-fun"><span class="section-number">8.4.2</span> Package sites via <code>pkg_site()</code></a></li>
-<li><a href="#sec:pkg-site-gha"><span class="section-number">8.4.3</span> Package sites via GitHub Action</a>
+<li><a href="#sec:pkg-site-fun"><span class="section-number">8.4.2</span> Package sites via <code>pkg_site()</code></a>
 <ul>
-<li><a href="#sec:package-playground"><span class="section-number">8.4.3.1</span> Package playground</a></li>
+<li><a href="#sec:pkg-site-groups"><span class="section-number">8.4.2.1</span> Grouping manual pages, articles, and examples</a></li>
 </ul>
 </li>
+<li><a href="#sec:package-playground"><span class="section-number">8.4.3</span> Package playground</a></li>
+<li><a href="#sec:pkg-site-gha"><span class="section-number">8.4.4</span> Package sites via GitHub Action</a></li>
 </ul>
 </li>
 </ul>
@@ -335,15 +354,15 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/index.Rmd">
+</nav>
+<article class="chapter" data-source="book/index.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/index.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/index.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <script type="module">document.querySelectorAll('pre > code[data-output]').forEach(el => {
   const a = document.createElement('a');
   a.className = 'ex-out';
-  a.href = `https://git.yihui.org/litedown/examples/${el.dataset.output}`;
+  a.href = `https://pkg.yihui.org/litedown/examples/${el.dataset.output}`;
   el.after(a);
 });</script>
 <h1 id="chp:preface" class="unnumbered">Preface</h1>
@@ -471,7 +490,7 @@ Hugo + paged.js + remark.js + tufte.css + distill.js/.css + …</p>
 </li>
 </ul>
 <div class="figure" id="fig:scope-litedown">
-<pre class="mermaid">classDiagram
+<pre class="pele">classDiagram
   class litedown {
     +HTML/LaTeX
     +min [ * ]
@@ -531,7 +550,7 @@ A minimal partial re-implementation of the R Markdown ecosystem as <strong>lited
 </div>
 </div>
 <div class="figure" id="fig:scope-rmarkdown">
-<pre class="mermaid">classDiagram
+<pre class="pele">classDiagram
   direction BT
   class htmlwidgets {
     +JS apps
@@ -629,19 +648,20 @@ relatively easy to use and simple to maintain. The functions <code>mark()</code>
 <p>Just to give you a better idea about the “lightweight”, as of today:</p>
 <ul>
 <li>
-<p>As the Markdown converter, Pandoc 3.8.3 binary is about 186Mb, and the
-<strong>litedown</strong> binary is under 1Mb on my macOS.</p>
+<p>As the Markdown converter, Pandoc 3.12.1 binary is about 257MB, and the
+<strong>litedown</strong> binary is under 1MB on my macOS.</p>
 </li>
 <li>
-<p>Bootstrap’s CSS is about 12,000 lines (plus 1500 lines of JS), and
-<strong>litedown</strong>’s base CSS is about 100 lines (no JS).</p>
+<p>Bootstrap 5.3.8’s minified CSS is about 232KB, plus 80KB of minified JS
+(the bundle with Popper). <strong>litedown</strong>’s default CSS is about 3KB minified
+(no JS).</p>
 </li>
 <li>
 <p>For paginating HTML documents,
-<a href="https://cdn.jsdelivr.net/npm/pagedjs/">paged.js</a> has 33,000+ lines of code,
-and my naive implementation,
-<a href="https://github.com/yihui/lite.js/blob/main/js/pages.js">pages.js</a>, has
-about 600 lines (400 lines of JS and 200 lines of CSS).</p>
+<a href="https://cdn.jsdelivr.net/npm/pagedjs/">paged.js</a> 0.4.3 is about 503KB
+minified, and my naive implementation,
+<a href="https://github.com/yihui/lite.js/blob/main/js/pages.js">pages.js</a>, is about
+16KB minified (12KB of JS and 4KB of CSS).</p>
 </li>
 </ul>
 <p>Admittedly, pursuing lightweight requires sacrifice in features and quality
@@ -805,10 +825,10 @@ can know more clearly what has changed in the output, which can help you avoid
 unexpected changes before publishing the output.</p>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/01-start.Rmd">
+</article>
+<article class="chapter" data-source="book/01-start.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/01-start.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/01-start.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:start"><span class="section-number main-number">1</span> Get Started</h1>
 <div class="epigraph">
@@ -825,7 +845,7 @@ target output format such as HTML and LaTeX.</p>
 <code>knitr::purl()</code>, and <code>litedown::mark()</code> as the new Pandoc. <a class="cross-ref-fig" href="#fig:fuse-flow">3</a> shows
 the conversion process from R Markdown to a target format.</p>
 <div class="figure" id="fig:fuse-flow">
-<pre class="mermaid">flowchart LR
+<pre class="pele">flowchart LR
   A@{ shape: doc, label: &quot;*.Rmd&quot; }-. &lt;code&gt;fuse()&lt;/code&gt; .-o F@{ shape: bolt }
   F o--- B@{ shape: doc, label: &quot;*.md&quot; }
   B-. &lt;code&gt;mark()&lt;/code&gt; .-o G@{ shape: framed-circle }
@@ -918,7 +938,7 @@ outcome manually from one place to another.</p>
 <a class="cross-ref-fig" href="#fig:flow-concepts">4</a> shows the basic components of a document and how they work
 together.</p>
 <div class="figure" id="fig:flow-concepts">
-<pre class="mermaid">flowchart TD
+<pre class="pele">flowchart TD
   O@{ shape: lin-doc, label: &quot;Input document&quot; }--&quot;crack()&quot;--&gt; A@{ shape: f-circ } -.-o B[[YAML]]
   A -.-o C[[Text chunk]]
   C -.- C1&gt;Text] --- C12{ } --&gt; H[[Text output]]
@@ -1051,10 +1071,10 @@ package as my last “down” package. After it is done, I wish to lie down.</p>
 <p>Let there be light.</p>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/02-fuse.Rmd">
+</article>
+<article class="chapter" data-source="book/02-fuse.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/02-fuse.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/02-fuse.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:fuse"><span class="section-number main-number">2</span> Computing</h1>
 <div class="epigraph">
@@ -1436,7 +1456,7 @@ Define CSS rules for the classes in the `#example-a` chunk:
 }
 ```
 </code></pre>
-<p>Here is an example of creating a callout (<a class="cross-ref-sec" href="#sec:callout">5.6</a>) from a code chunk:</p>
+<p>Here is an example of creating a callout (<a class="cross-ref-sec" href="#sec:callout">5.7</a>) from a code chunk:</p>
 <pre><code class="language-md" data-file="003.Rmd" data-output="003-attr-callout.html">---
 title: Create a callout via the option `attr.chunk`
 output:
@@ -1497,7 +1517,7 @@ character string), which will be used to check if the cache exists. Any change
 in the input of the hash will lead to a change in the hash value, which in turn
 invalidates the old cache and creates new cache.</p>
 <div class="figure" id="fig:flow-cache">
-<pre class="mermaid">flowchart TD
+<pre class="pele">flowchart TD
   A[[Code chunk]]--&quot;parse()&quot;--&gt; B1&gt;Expression]
   A--&quot;xfun::find_globals()&quot;--&gt; B2&gt;Global variables]
   A--&quot;cache.extra&quot;--&gt; B3&gt;Other dependencies]
@@ -2326,7 +2346,7 @@ example, the labels for the following code chunks will be <code>chunk-a</code>, 
 //| label: chunk-js
 ```
 
-```{mermaid, label = 'project-flowchart'}
+```{pele, label = 'project-flowchart'}
 ```
 </code></pre>
 <h3 id="sec:option-message"><span class="section-number">2.2.17</span> <code>message</code>: message behavior</h3>
@@ -3173,7 +3193,7 @@ plot(cars)
 <p>Both <code>#'</code> and <code>#|</code> comments are optional. If no <code>#'</code> or <code>#|</code> comments are found
 in the script, the whole script will be treated as a single code chunk.</p>
 <div class="figure" id="fig:flow-sieve">
-<pre class="mermaid">flowchart TD
+<pre class="pele">flowchart TD
   O@{ shape: lin-doc, label: &quot;Input script&quot; }--&quot;sieve()&quot;--&gt; A@{ shape: f-circ } -.-o B[[&quot;#' YAML&quot;]]
   A -.-o C[[&quot;#' Text&quot;]]
   C ---&gt; H[[Text]]
@@ -3203,8 +3223,8 @@ check all supported languages via:</p>
 <pre><code class="language-r">sort(names(litedown::engines()))
 </code></pre>
 <pre><code>#&gt;  [1] &quot;bash&quot;       &quot;css&quot;        &quot;embed&quot;      &quot;exec&quot;       &quot;js&quot;        
-#&gt;  [6] &quot;md&quot;         &quot;mermaid&quot;    &quot;powershell&quot; &quot;r&quot;          &quot;sh&quot;        
-#&gt; [11] &quot;zsh&quot;       
+#&gt;  [6] &quot;md&quot;         &quot;mermaid&quot;    &quot;pele&quot;       &quot;powershell&quot; &quot;r&quot;         
+#&gt; [11] &quot;sh&quot;         &quot;zsh&quot;       
 </code></pre>
 <p>You can get a language engine definition via <code>litedown::engines('LANG')</code>, where
 <code>LANG</code> is the language name, e.g.,</p>
@@ -3262,18 +3282,26 @@ e.g.,</p>
 (i.e., they will not run until the full document has been parsed). If you want
 to run an external script immediately, you may set the chunk option
 <code>defer = FALSE</code>.</p>
-<h3 id="sec:the-mermaid-engine"><span class="section-number">2.6.3</span> The Mermaid engine</h3>
-<p>The <code>mermaid</code> engine can be used to draw diagrams with
-<a href="https://mermaid.js.org">mermaid.js</a>, e.g.,</p>
-<pre><code class="language-md">```{mermaid, flow-abcd, echo = FALSE, fig.cap = 'A flowchart.'}
+<h3 id="sec:engine-diagram"><span class="section-number">2.6.3</span> The Pele and Mermaid engines</h3>
+<p>The <code>pele</code> and <code>mermaid</code> engines can be used to draw diagrams from text written
+in the <a href="https://mermaid.js.org">Mermaid</a> syntax. The <code>pele</code> engine renders them
+with <a href="https://pele.run">Pele</a>, which is more lightweight than
+<a href="https://mermaid.js.org">mermaid.js</a> (the <code>mermaid</code> engine), supports all
+diagram types in Mermaid 12.1.0, and renders diagrams synchronously with its own
+layout and visual style, e.g.,</p>
+<pre><code class="language-md">```{pele, flow-abcd, echo = FALSE, fig.cap = 'A Pele flowchart.'}
 flowchart TD
     A[WEB] --&gt; B[noweb] --&gt; D[Sweave] --&gt; E[knitr]
     A --&gt; C[CWEB]
     D --&gt; F[litedown]
 ```
 </code></pre>
-<p>The JS library mermaid.js has to be loaded for the diagrams to be rendered. By
-default, the latest version of mermaid.js will be added to the <code>js</code> variable
+<p>The two engines take the same input, so you can switch between them by changing
+the engine name. The chunk option <code>fig.cap</code> adds a caption to the diagram, and
+<code>echo = FALSE</code> hides the diagram source. Use the <code>mermaid</code> engine if you need
+a Mermaid feature that Pele does not support.</p>
+<p>The JS library has to be loaded for the diagrams to be rendered. By default,
+the latest version of Pele (or mermaid.js) will be added to the <code>js</code> variable
 (<a class="cross-ref-sec" href="#sec:the-js-variable">4.3.2.2</a>) in the YAML metadata automatically. If you prefer using a
 specific version, you can add it manually to the YAML metadata, e.g.,</p>
 <pre><code class="language-md">---
@@ -3288,6 +3316,10 @@ output:
 
 ```
 </code></pre>
+<p>The same applies to Pele, e.g., <code>js: [&quot;@npm/pele@1.8.0/dist/pele.global.js&quot;]</code>.
+Colors and fonts of Pele diagrams can be customized via CSS variables such as
+<code>--pele-bg</code> and <code>--pele-font</code> (see the <a href="https://pele.run/theming">Pele
+documentation</a>).</p>
 <h3 id="sec:the-embed-engine"><span class="section-number">2.6.4</span> The embed engine</h3>
 <p>The <code>embed</code> engine can be used to embed text files verbatim in the output. You
 can pass the file paths to the chunk option <code>file</code> or write the paths in the
@@ -3428,10 +3460,10 @@ Pandoc. Some features may never be re-implemented, especially when the
 implementation is not simple enough.</p>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/03-syntax.Rmd">
+</article>
+<article class="chapter" data-source="book/03-syntax.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/03-syntax.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/03-syntax.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:syntax"><span class="section-number main-number">3</span> Markdown Syntax</h1>
 <div class="epigraph">
@@ -3761,6 +3793,10 @@ with attributes in HTML output:</p>
 <p>This provides a way to create <code>&lt;span&gt;</code> elements, which is similar to <a href="https://pandoc.org/MANUAL.html#extension-bracketed_spans">bracketed
 <code>Span</code>s</a> (i.e.,
 <code>[text]{...}</code>) in Pandoc’s Markdown.</p>
+<p>Images of PDF files (e.g., <code>![](foo.pdf)</code>) are included via <code>&lt;embed&gt;</code> instead
+of <code>&lt;img&gt;</code> in HTML output. Browsers often display an <code>&lt;embed&gt;</code> with a small
+default height, so you may want to set a larger one via attributes, e.g.,
+<code>![](foo.pdf){height=&quot;600&quot;}</code>.</p>
 <p>For fenced code blocks, a special rule is that the first class name will be
 treated as the language name for a block, and the <code>class</code> attribute of the
 result <code>&lt;code&gt;</code> tag will have a <code>language-</code> prefix. For example, the following
@@ -4110,10 +4146,10 @@ LaTeX beamer, and EPUB. The <strong>litedown</strong> package is unlikely to sup
 formats beyond HTML and LaTeX.</p>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/04-mark.Rmd">
+</article>
+<article class="chapter" data-source="book/04-mark.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/04-mark.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/04-mark.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:mark"><span class="section-number main-number">4</span> Markdown Rendering</h1>
 <div class="epigraph">
@@ -4645,8 +4681,8 @@ variable.</p>
 <table>
 <thead>
 <tr>
-<th>syntax</th>
-<th>actual URL</th>
+<th>Syntax</th>
+<th>Actual URL</th>
 </tr>
 </thead>
 <tbody>
@@ -4686,8 +4722,13 @@ work after you go offline, please see <a class="cross-ref-sec" href="#sec:embed-
 same as the <code>css</code> variable, e.g., <code>snap</code> means <code>snap.js</code> in this package,
 <code>@snap</code> means a “jsdelivr” resource, and you can use arbitrary paths or URLs to
 other JS files.</p>
-<h4 id="sec:the-body-class-variable"><span class="section-number">4.3.2.3</span> The <code>body-class</code> variable</h4>
-<p>A class name for the main body (the default value is <code>body</code>).</p>
+<h4 id="sec:the-body-tag-and-body-class-variables"><span class="section-number">4.3.2.3</span> The <code>body-tag</code> and <code>body-class</code> variables</h4>
+<p>The main body of the document is wrapped in <code>&lt;main&gt;</code>, and then in an element
+whose tag name is <code>body-tag</code> (the default value is <code>article</code>) and class name is
+<code>body-class</code> (the default value is empty), e.g., `<main><article class="foo">…</p>
+</article></main>`. For example, you can set `body-class: foo` and then style
+the body with the CSS selector `.foo`, or set `body-tag: div` if the content is
+not an article.
 <h4 id="sec:the-lang-variable"><span class="section-number">4.3.2.4</span> The <code>lang</code> variable</h4>
 <p>The language of the HTML document, used to set the <code>lang</code> attribute of the
 <code>&lt;html&gt;</code> tag. It should be a <a href="https://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>
@@ -4783,10 +4824,10 @@ and <code>none</code>.</p>
 </code></pre>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/05-assets.Rmd">
+</article>
+<article class="chapter" data-source="book/05-assets.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/05-assets.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/05-assets.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:assets"><span class="section-number main-number">5</span> CSS/JS assets</h1>
 <div class="epigraph">
@@ -4801,10 +4842,13 @@ complicated and difficult part of it was only just beginning.</p>
 <p>The <strong>litedown</strong> package aims at lightweight with a minimal number of features
 at its core, but you are free to add more features by yourself. In this chapter,
 we introduce some CSS/JS assets from the GitHub repository
-<a href="https://github.com/yihui/lite.js">https://github.com/yihui/lite.js</a>. You can load arbitrary external JS and CSS
-files via the <code>js</code> and <code>css</code> meta variables. There are numerous JS libraries and
-CSS frameworks on the web, and you do not have to use the ones mentioned in this
-chapter. You can also write CSS/JS by yourself to enrich your HTML applications.</p>
+<a href="https://github.com/yihui/lite.js">https://github.com/yihui/lite.js</a>: first the default CSS (<a class="cross-ref-sec" href="#sec:default-css">5.2</a>),
+which you can customize with your own CSS or a stylesheet from the web
+(<a class="cross-ref-sec" href="#sec:custom-assets">5.3</a>), and then optional features that you can turn on with extra
+assets. You can load arbitrary external JS and CSS files via the <code>js</code> and <code>css</code>
+meta variables. There are numerous JS libraries and CSS frameworks on the web,
+and you do not have to use the ones mentioned in this chapter. You can also
+write CSS/JS by yourself to enrich your HTML applications.</p>
 <p>Remember that the CSS and JS are introduced under the output format <code>html</code> in
 YAML metadata, e.g.,</p>
 <pre><code class="language-yaml">---
@@ -4838,11 +4882,11 @@ A reference of CSS/JS assets in the <code>lite.js</code> repository.</p>
 <table>
 <thead>
 <tr>
-<th>feature</th>
-<th>description</th>
-<th>css</th>
-<th>js</th>
-<th>section</th>
+<th>Feature</th>
+<th>Description</th>
+<th>CSS</th>
+<th>JS</th>
+<th>Section</th>
 </tr>
 </thead>
 <tbody>
@@ -4851,119 +4895,126 @@ A reference of CSS/JS assets in the <code>lite.js</code> repository.</p>
 <td>side notes, floats, and full-width elements for articles</td>
 <td><code>@article</code></td>
 <td><code>@sidenotes, @appendix</code></td>
-<td><a class="cross-ref-sec" href="#sec:article">5.8</a></td>
+<td><a class="cross-ref-sec" href="#sec:article">5.9</a></td>
 </tr>
 <tr>
 <td>book</td>
 <td>cover and chapter pages for books</td>
 <td><code>@book</code></td>
 <td></td>
-<td><a class="cross-ref-sec" href="#sec:book">5.9</a></td>
+<td><a class="cross-ref-sec" href="#sec:book">5.10</a></td>
 </tr>
 <tr>
 <td>callout</td>
 <td>frames with legends</td>
 <td><code>@callout</code></td>
 <td><code>@callout</code></td>
-<td><a class="cross-ref-sec" href="#sec:callout">5.6</a></td>
+<td><a class="cross-ref-sec" href="#sec:callout">5.7</a></td>
 </tr>
 <tr>
 <td>center-img</td>
 <td>center images in paragraphs</td>
 <td></td>
 <td><code>@center-img</code></td>
-<td><a class="cross-ref-sec" href="#sec:center-img">5.15</a></td>
+<td><a class="cross-ref-sec" href="#sec:center-img">5.17</a></td>
 </tr>
 <tr>
 <td>chapter-toc</td>
 <td>add TOC to each chapter</td>
 <td></td>
 <td><code>@chapter-toc</code></td>
-<td><a class="cross-ref-sec" href="#sec:chapter-toc">5.10</a></td>
+<td><a class="cross-ref-sec" href="#sec:chapter-toc">5.11</a></td>
 </tr>
 <tr>
 <td>copy-button</td>
 <td>copy buttons</td>
 <td><code>@copy-button</code></td>
 <td><code>@copy-button</code></td>
-<td><a class="cross-ref-sec" href="#sec:copy-button">5.3</a></td>
+<td><a class="cross-ref-sec" href="#sec:copy-button">5.4</a></td>
 </tr>
 <tr>
 <td>default</td>
 <td>default CSS</td>
 <td><code>@default</code></td>
 <td></td>
-<td><a class="cross-ref-sec" href="#sec:default">5.2</a></td>
+<td><a class="cross-ref-sec" href="#sec:default-css">5.2</a></td>
 </tr>
 <tr>
 <td>external-link</td>
 <td>open external links in new windows</td>
 <td></td>
 <td><code>@external-link</code></td>
-<td><a class="cross-ref-sec" href="#sec:external-link">5.16</a></td>
+<td><a class="cross-ref-sec" href="#sec:external-link">5.18</a></td>
 </tr>
 <tr>
 <td>fold-details</td>
 <td>fold elements (e.g., code blocks)</td>
 <td></td>
 <td><code>@fold-details</code></td>
-<td><a class="cross-ref-sec" href="#sec:fold-details">5.5</a></td>
+<td><a class="cross-ref-sec" href="#sec:fold-details">5.6</a></td>
 </tr>
 <tr>
 <td>heading-anchor</td>
 <td>add anchor links to headings</td>
 <td><code>@heading-anchor</code></td>
 <td><code>@heading-anchor</code></td>
-<td><a class="cross-ref-sec" href="#sec:heading-anchor">5.7</a></td>
+<td><a class="cross-ref-sec" href="#sec:heading-anchor">5.8</a></td>
 </tr>
 <tr>
 <td>key-buttons</td>
 <td>style keyboard shortcuts</td>
 <td><code>@key-buttons</code></td>
 <td><code>@key-buttons</code></td>
-<td><a class="cross-ref-sec" href="#sec:key-buttons">5.17</a></td>
+<td><a class="cross-ref-sec" href="#sec:key-buttons">5.19</a></td>
+</tr>
+<tr>
+<td>nav-highlight</td>
+<td>highlight the current page in the site navigation</td>
+<td><code>@site</code></td>
+<td><code>@nav-highlight</code></td>
+<td><a class="cross-ref-sec" href="#sec:nav-highlight">5.13</a></td>
 </tr>
 <tr>
 <td>pages</td>
 <td>paginate HTML for printing</td>
 <td><code>@pages</code></td>
 <td><code>@pages</code></td>
-<td><a class="cross-ref-sec" href="#sec:pages">5.12</a></td>
+<td><a class="cross-ref-sec" href="#sec:pages">5.14</a></td>
 </tr>
 <tr>
 <td>right-quote</td>
 <td>right-align quote footers</td>
 <td></td>
 <td><code>@right-quote</code></td>
-<td><a class="cross-ref-sec" href="#sec:right-quote">5.14</a></td>
+<td><a class="cross-ref-sec" href="#sec:right-quote">5.16</a></td>
 </tr>
 <tr>
 <td>snap</td>
 <td>snap slides</td>
 <td><code>@snap</code></td>
 <td><code>@snap</code></td>
-<td><a class="cross-ref-sec" href="#sec:snap">5.13</a></td>
+<td><a class="cross-ref-sec" href="#sec:snap">5.15</a></td>
 </tr>
 <tr>
 <td>snap-clean</td>
 <td>clean slide theme</td>
 <td><code>@snap-clean</code></td>
 <td></td>
-<td><a class="cross-ref-sec" href="#sec:snap">5.13</a></td>
+<td><a class="cross-ref-sec" href="#sec:snap">5.15</a></td>
 </tr>
 <tr>
 <td>tabsets</td>
 <td>create tabsets from bullet lists or sections</td>
 <td><code>@tabsets</code></td>
 <td><code>@tabsets</code></td>
-<td><a class="cross-ref-sec" href="#sec:tabsets">5.4</a></td>
+<td><a class="cross-ref-sec" href="#sec:tabsets">5.5</a></td>
 </tr>
 <tr>
 <td>toc-highlight</td>
 <td>highlight TOC items on scroll</td>
 <td></td>
 <td><code>@toc-highlight</code></td>
-<td><a class="cross-ref-sec" href="#sec:toc-highlight">5.11</a></td>
+<td><a class="cross-ref-sec" href="#sec:toc-highlight">5.12</a></td>
 </tr>
 </tbody>
 </table>
@@ -4981,11 +5032,12 @@ litedown::vest(css = c('@callout', '@book'), js = '@callout')
 ```
 </code></pre>
 <p>You can call <code>vest()</code> multiple times in a document to keep adding assets.</p>
-<h2 id="sec:default"><span class="section-number">5.2</span> The default CSS</h2>
+<h2 id="sec:default-css"><span class="section-number">5.2</span> The default CSS</h2>
 <p>The default stylesheet defines the basic styles of the document body, lists,
 code, figures, tables, block quotes, TOC, links, and cross-references, etc. For
-example, the maximum width for the body is set to 800px. If you want to override
-it, you can provide your own stylesheet, e.g.,</p>
+example, the maximum width for the body is set to 50em (800px at the default
+font size). If you want to override it, you can provide your own stylesheet (see
+<a class="cross-ref-sec" href="#sec:custom-assets">5.3</a> for more), e.g.,</p>
 <pre><code class="language-css">body {
   max-width: 1000px;
 }
@@ -4999,7 +5051,206 @@ css: [&quot;default&quot;]
 <p>The former uses the jsdelivr resource and will not be embedded in HTML by
 default. The latter points to the <code>default.css</code> shipped with the <strong>litedown</strong>
 package, and will always be embedded.</p>
-<h2 id="sec:copy-button"><span class="section-number">5.3</span> Copy buttons</h2>
+<h2 id="sec:custom-assets"><span class="section-number">5.3</span> Custom CSS/JS</h2>
+<p>The default CSS (<a class="cross-ref-sec" href="#sec:default-css">5.2</a>) gives your pages a simple look, and you may
+want to change it. The look of a web page (colors, fonts, spacing, etc.) is
+controlled by CSS, which is a list of rules like “make all links red”. You do
+not have to know CSS to change how your <strong>litedown</strong> pages look. There are two
+easy ways: add a few rules to tweak what you do not like, or use a ready-made
+stylesheet from the web. The same ideas apply to JavaScript, which controls how
+a page behaves.</p>
+<p>To get a feel for it, visit the
+<a href="https://pkg.yihui.org/litedown/examples.html#sec:custom-styles">examples</a>. The
+first one is a
+<a href="https://pkg.yihui.org/litedown/examples/028-style-playground.html">playground</a>,
+where you can pick a font, colors, and so on with sliders and color pickers, and
+<strong>litedown</strong> shows the CSS code for your choices so you can copy it. The others
+show the same page with different stylesheets from the web.</p>
+<h3 id="sec:add-a-few-rules-to-a-document"><span class="section-number">5.3.1</span> Add a few rules to a document</h3>
+<p>If your document is an R Markdown file, you can write the rules in a <code>css</code> code
+chunk anywhere in the document. For example, this makes links and headings red,
+and increases the text size:</p>
+<pre><code class="language-md">```{css, echo = FALSE}
+body { font-size: 18px; }
+a, h1, h2, h3 { color: crimson; }
+```
+</code></pre>
+<p>Alternatively, save the rules in a file (say, <code>my.css</code>) and list it in the YAML
+metadata. Keep <code>@default</code> in front of it so that <strong>litedown</strong>’s default look
+stays, and your rules (which come later) override it:</p>
+<pre><code class="language-yaml">output:
+  html:
+    meta:
+      css: [&quot;@default&quot;, &quot;my.css&quot;]
+</code></pre>
+<p>How do you know what to write? Right-click the thing you want to change on the
+page and choose “Inspect”: your web browser will show its tag name and class,
+which is what you put before the braces <code>{}</code> (the “selector”). Some common
+ones are listed in <a class="cross-ref-tab" href="#tab:css-selectors">5</a>:</p>
+<div class="table" id="tab:css-selectors">
+<div class="caption">
+<p><span class="ref-number-tab">5</span> Common CSS selectors for parts of a page.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>To change</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the whole page</td>
+<td><code>body</code> (font, background, and width)</td>
+</tr>
+<tr>
+<td>title, author, date</td>
+<td><code>.frontmatter</code></td>
+</tr>
+<tr>
+<td>table of contents</td>
+<td><code>#TOC</code>, and its links <code>#TOC a</code></td>
+</tr>
+<tr>
+<td>section headings</td>
+<td><code>h1</code>, <code>h2</code>, <code>h3</code>, etc.</td>
+</tr>
+<tr>
+<td>code</td>
+<td><code>pre</code> (blocks) and <code>code</code> (inline)</td>
+</tr>
+<tr>
+<td>block quotes</td>
+<td><code>blockquote</code></td>
+</tr>
+<tr>
+<td>tables</td>
+<td><code>table</code></td>
+</tr>
+<tr>
+<td>footnotes</td>
+<td><code>.footnotes</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="sec:css-variables"><span class="section-number">5.3.2</span> Customize via CSS variables</h3>
+<p>Instead of writing rules for selectors, you can change the appearance of the
+CSS assets via CSS variables (names starting with <code>--</code>). Set them on <code>:root</code> in
+your own CSS. Compared with selectors, variables are easier and safer: one
+variable changes every place that uses it (e.g., <code>--accent</code> colors both links
+and the navigation bar), you do not need to inspect the page or outweigh the
+specificity of the default rules, and variables are less likely to break when
+the HTML structure or class names change in future versions. For example:</p>
+<pre><code class="language-css">:root {
+  --accent: seagreen;
+  --muted-bg: #fffbe6;
+}
+</code></pre>
+<p><a class="cross-ref-tab" href="#tab:css-variables">6</a> lists the variables shared by several assets. Their default
+values are defined on <code>:root</code> in <code>default.css</code>, which the other assets (article,
+book, site, manual) build upon, so your CSS must come <em>after</em> <code>default.css</code>
+(see <a class="cross-ref-sec" href="#sec:custom-assets">5.3</a>).</p>
+<div class="table" id="tab:css-variables">
+<div class="caption">
+<p><span class="ref-number-tab">6</span> CSS variables shared by several assets.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--accent</code></td>
+<td><code>steelblue</code></td>
+<td>links and the site navigation bar</td>
+</tr>
+<tr>
+<td><code>--muted-bg</code></td>
+<td><code>#f8f8f8</code></td>
+<td>subtle backgrounds (code, captions, table stripes)</td>
+</tr>
+<tr>
+<td><code>--border-color</code></td>
+<td><code>#eee</code></td>
+<td>light borders of boxes, blocks, and quotes</td>
+</tr>
+<tr>
+<td><code>--rule-color</code></td>
+<td><code>#666</code></td>
+<td>strong rules (table, heading, and footer lines)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A variable defined on a closer element wins over the one on <code>:root</code> for that
+element and its descendants, regardless of the order of the CSS. For example,
+<code>:root { --accent: seagreen; }</code> changes the color of all links and the site
+navigation bar, and <code>.site-nav { --accent: crimson; }</code> changes only the
+navigation bar. Assets with their own variables (e.g., <code>--paper-width</code> in
+<a class="cross-ref-sec" href="#sec:pages">5.14</a>) document them in their sections.</p>
+<h3 id="sec:use-css-js-from-the-web"><span class="section-number">5.3.3</span> Use CSS/JS from the web</h3>
+<p>Many people have published small stylesheets that make plain HTML pages look
+nice, such as <a href="https://watercss.kognise.dev">Water.css</a>,
+<a href="https://newcss.net">new.css</a>, <a href="https://simplecss.org">Simple.css</a>, and
+<a href="https://picocss.com">Pico</a>. You can use one by adding its address to the <code>css</code>
+field. These stylesheets are complete by themselves, so leave out <code>@default</code>:</p>
+<pre><code class="language-yaml">output:
+  html:
+    meta:
+      css: [&quot;https://newcss.net/new.min.css&quot;]
+</code></pre>
+<p>If a stylesheet is on <a href="https://www.jsdelivr.com">jsDelivr</a>, you can use the
+shorthand <code>@npm/</code> (or <code>@gh/</code> for GitHub) followed by the package and file name,
+e.g., <code>css: [&quot;@npm/water.css/out/water.css&quot;]</code> (see <a class="cross-ref-tab" href="#tab:at-syntax">3</a> for the
+syntax).</p>
+<p>All of these work with <strong>litedown</strong> because it produces ordinary HTML. A few
+stylesheets look slightly off (e.g., a title that is not centered), and you can
+fix that with a few rules as shown above. The examples page above has many of
+them, including such small fixes.</p>
+<p>You are not limited to the CSS/JS assets introduced in this chapter: you can
+include any CSS framework or JS library in the same way, via the <code>css</code> and <code>js</code>
+fields. For example, here is how to use the
+<a href="https://github.com/fiduswriter/simple-datatables/">simple-datatables</a> library
+to create interactive tables:</p>
+<pre><code class="language-md">---
+title: Display Tables with the JS Library DataTables
+output:
+  html:
+    meta:
+      css: [&quot;@default&quot;, &quot;@npm/simple-datatables/dist/style&quot;]
+      js: [&quot;@npm/simple-datatables&quot;]
+---
+
+::: {#mtcars-table}
+```{r}
+I(mtcars)
+```
+:::
+
+```{js, type = &quot;module&quot;}
+new simpleDatatables.DataTable('#mtcars-table &gt; table');
+```
+</code></pre>
+<p>See <a class="cross-ref-sec" href="#sec:simple-dt">6.2</a> for more ways to create this type of table.</p>
+<h3 id="sec:global-css"><span class="section-number">5.3.4</span> Apply the styles to all pages</h3>
+<p>For a website or a book (<a class="cross-ref-chp" href="#chp:sites">8</a>), you do not need to repeat the setting in
+every page. Put it in the <code>output</code> field of <code>_litedown.yml</code> instead, and it will
+apply to all pages. For example, if you have saved your rules in <code>custom.css</code> in
+the project folder, this adds them to the default look of the site:</p>
+<pre><code class="language-yaml">output:
+  html:
+    meta:
+      css2: [&quot;custom.css&quot;]
+</code></pre>
+<p>The field <code>css2</code> means “add to the defaults”, whereas <code>css</code> means “replace the
+defaults”. So if you want to use a stylesheet from the web for all pages, use
+<code>css</code> as above. See <a class="cross-ref-sec" href="#sec:site-defaults">8.3.1</a> for more details.</p>
+<h2 id="sec:copy-button"><span class="section-number">5.4</span> Copy buttons</h2>
 <p>Normally you would have to select the text before copying it, and copy buttons
 can save the effort of text selection when you want to copy the text from an
 HTML element. You just click on the button, and the text is automatically
@@ -5037,7 +5288,7 @@ Ninja</a>)</p>
 read <a href="https://yihui.org/en/2023/09/copy-button/">this post</a> if you are
 interested in generalizing the copy button to other elements (without using the
 <code>copy-this</code> class).</p>
-<h2 id="sec:tabsets"><span class="section-number">5.4</span> Tabsets</h2>
+<h2 id="sec:tabsets"><span class="section-number">5.5</span> Tabsets</h2>
 <p>A tabset provides a compact way to arrange content in tabs, which can save a lot
 of vertical space on the page. To create a tabset, you need to load the
 following assets:</p>
@@ -5045,7 +5296,7 @@ following assets:</p>
 js: [&quot;@tabsets&quot;]
 </code></pre>
 <p>There are two ways to create a tabset in Markdown.</p>
-<h3 id="sec:from-a-bullet-list"><span class="section-number">5.4.1</span> From a bullet list</h3>
+<h3 id="sec:from-a-bullet-list"><span class="section-number">5.5.1</span> From a bullet list</h3>
 <p>The first way is to write a bullet inside a fenced Div with the class name
 <code>tabset</code>. The first element of each bullet item will become the tab title, and
 the rest of elements will become the tab pane, e.g.,</p>
@@ -5185,7 +5436,7 @@ xfun::tabset(cfg, dput)
 </ul>
 </div>
 <p>I have never loved YAML, but this time, I feel that YAML is adorable.</p>
-<h3 id="sec:from-sections"><span class="section-number">5.4.2</span> From sections</h3>
+<h3 id="sec:from-sections"><span class="section-number">5.5.2</span> From sections</h3>
 <p>The second way to create a tabset is through section headings. If you add a
 class name <code>tabset</code> to a heading, headings of the next (lower) level will be
 used as the tab titles, e.g.,</p>
@@ -5242,7 +5493,7 @@ the ID of the starting element of the tabset, e.g.,</p>
 </code></pre>
 <p>When a tabset is created from sections, the tab titles (from section headings)
 will appear in the TOC of the document if TOC is enabled (<a class="cross-ref-sec" href="#sec:toc">4.1.15</a>).</p>
-<h2 id="sec:fold-details"><span class="section-number">5.5</span> Code folding</h2>
+<h2 id="sec:fold-details"><span class="section-number">5.6</span> Code folding</h2>
 <pre><code class="language-yaml">js: [&quot;@fold-details&quot;]
 </code></pre>
 <p>The <code>fold-details.js</code> script wraps elements in a <code>&lt;details&gt;</code> container so they
@@ -5252,7 +5503,7 @@ attributes on the <code>&lt;script&gt;</code> tag, e.g., to fold a different set
 to add a button that toggles all foldable elements at once. See <a href="https://yihui.org/en/2023/09/code-folding/">this
 post</a> for the full list of options
 and how to configure the script.</p>
-<h2 id="sec:callout"><span class="section-number">5.6</span> Callout blocks</h2>
+<h2 id="sec:callout"><span class="section-number">5.7</span> Callout blocks</h2>
 <p>A callout block is a fenced Div with the class name <code>callout-*</code>. Callouts
 require <code>callout.css</code> and <code>callout.js</code>:</p>
 <pre><code class="language-yaml">css: [&quot;@callout&quot;]
@@ -5279,7 +5530,7 @@ Is that cool?
 <p>Is that cool?</p>
 </div>
 </div>
-<h3 id="sec:built-in-callouts"><span class="section-number">5.6.1</span> Built-in callouts</h3>
+<h3 id="sec:built-in-callouts"><span class="section-number">5.7.1</span> Built-in callouts</h3>
 <p>The stylesheet <code>callout.css</code> supports styling <code>tip</code>, <code>note</code>, <code>caution</code>,
 <code>warning</code>, <code>important</code>, and <code>example</code> callouts. For example:</p>
 <div class="callout-note">
@@ -5309,7 +5560,7 @@ Change the title of this example to &quot;Demo&quot;.
 <p>Change the title of this example to “Demo”.</p>
 </div>
 </div>
-<h3 id="sec:customizing-callouts"><span class="section-number">5.6.2</span> Customizing callouts</h3>
+<h3 id="sec:customizing-callouts"><span class="section-number">5.7.2</span> Customizing callouts</h3>
 <p>You do not have to use <code>callout.css</code> but can define your own CSS rules, e.g.,</p>
 <pre><code class="language-css">.callout-important {
   background: red;
@@ -5362,7 +5613,7 @@ define the border color, background, and icon of a callout, e.g.,</p>
   --callout-icon: &quot;♫ &quot;;
 }
 </code></pre>
-<h2 id="sec:heading-anchor"><span class="section-number">5.7</span> Add anchor links to headings</h2>
+<h2 id="sec:heading-anchor"><span class="section-number">5.8</span> Add anchor links to headings</h2>
 <p>The <code>heading-anchor.js</code> script appends an anchor link to every section heading
 (<code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>) that has a nonempty <code>id</code> attribute, so readers can click on
 the anchor to get a direct link to that section. The CSS is necessary only if
@@ -5372,7 +5623,7 @@ js: [&quot;@heading-anchor&quot;]
 </code></pre>
 <p>The anchors in this book are added exactly this way; hover over any heading and
 you will see the anchor symbol appear next to it.</p>
-<h2 id="sec:article"><span class="section-number">5.8</span> HTML articles</h2>
+<h2 id="sec:article"><span class="section-number">5.9</span> HTML articles</h2>
 <p>You can style an HTML page in an article format via the following CSS and JS:</p>
 <pre><code class="language-yaml">css: [&quot;@default&quot;, &quot;@article&quot;]
 js: [&quot;@sidenotes&quot;, &quot;@appendix&quot;]
@@ -5391,13 +5642,14 @@ sidenotes.</p>
 </ul>
 <p>The web version of this book is also based on the article format, so you know
 what an article format looks like when you read the HTML version of the book.</p>
-<h3 id="sec:the-overall-style"><span class="section-number">5.8.1</span> The overall style</h3>
-<p>The maximum width of the article body is 800px. For larger screens, this means
-there will be extra space in the left/right margin, where we can place auxiliary
-information, such as the TOC and footnotes. On smaller screens, the side content
-will be collapsed into the body.</p>
+<h3 id="sec:the-overall-style"><span class="section-number">5.9.1</span> The overall style</h3>
+<p>The maximum width of the article body is also 50em (<a class="cross-ref-sec" href="#sec:default-css">5.2</a>). For
+larger screens, this means there will be extra space in the left/right margin,
+where we can place auxiliary information, such as the TOC and footnotes. On
+smaller screens, the side content will be collapsed into the body.</p>
 <p>The article frontmatter, body, and optionally the appendix are placed in
-separate boxes.</p>
+separate boxes, whose background color is the CSS variable <code>--article-bg</code>
+(default: <code>#fff</code>; see <a class="cross-ref-sec" href="#sec:css-variables">5.3.2</a>).</p>
 <p>The default typeface is sans-serif, and you can customize it by supplying an
 external CSS file (via the <code>css</code> meta variable) or just embedding CSS in the
 document body, e.g.,</p>
@@ -5408,22 +5660,22 @@ body {
 }
 ```
 </code></pre>
-<h3 id="sec:side-elements"><span class="section-number">5.8.2</span> Side elements</h3>
+<h3 id="sec:side-elements"><span class="section-number">5.9.2</span> Side elements</h3>
 <p>The TOC and footnotes are automatically placed in the margin if space permits.
 You can also write arbitrary content in the margin via a fenced <code>Div</code>.</p>
-<h4 id="sec:the-toc"><span class="section-number">5.8.2.1</span> The TOC</h4>
+<h4 id="sec:the-toc"><span class="section-number">5.9.2.1</span> The TOC</h4>
 <p>The TOC is sticky on the left side as you scroll down the article. If you do not
 like this behavior, you may cancel it via CSS:</p>
 <pre><code class="language-css">#TOC {
   top: unset;
 }
 </code></pre>
-<h4 id="sec:footnotes-on-the-side"><span class="section-number">5.8.2.2</span> Footnotes on the side</h4>
+<h4 id="sec:footnotes-on-the-side"><span class="section-number">5.9.2.2</span> Footnotes on the side</h4>
 <p>Footnotes are moved to the right side. When you move your cursor over a footnote
 number in the body, the footnote will be moved next to your cursor. This can be
 convenient when you have multiple footnotes on a line, since you do not need to
 look for a specific footnote in the margin.</p>
-<h4 id="sec:arbitrary-sidenotes"><span class="section-number">5.8.2.3</span> Arbitrary sidenotes</h4>
+<h4 id="sec:arbitrary-sidenotes"><span class="section-number">5.9.2.3</span> Arbitrary sidenotes</h4>
 <p>You can write anything in the margin by using a fenced <code>Div</code> with the classes
 <code>.side</code> and <code>.side-left</code> or <code>.side-right</code>.</p>
 <div class="side side-left">
@@ -5457,9 +5709,9 @@ article body). What we need to do next is move it further to the right by 200px
 (i.e., its width), which is done by the <code>-200px</code> right margin. Remember, a
 positive right margin in CSS moves an element to the left, and a negative right
 margin moves it to the right.</p>
-<h3 id="sec:body-elements"><span class="section-number">5.8.3</span> Body elements</h3>
+<h3 id="sec:body-elements"><span class="section-number">5.9.3</span> Body elements</h3>
 <p>Inside the article body, you can write a few special elements.</p>
-<h4 id="sec:full-width-elements"><span class="section-number">5.8.3.1</span> Full-width elements</h4>
+<h4 id="sec:full-width-elements"><span class="section-number">5.9.3.1</span> Full-width elements</h4>
 <p>When an element is wider than the article body, you can show it in its full
 width by enclosing the element in a fenced <code>Div</code> with the class <code>.fullwidth</code>,
 e.g.,</p>
@@ -5493,7 +5745,7 @@ plot(sunspots, col = 'red')
 grid()
 ```
 </code></pre>
-<h4 id="sec:left-right-quotes"><span class="section-number">5.8.3.2</span> Left/right quotes</h4>
+<h4 id="sec:left-right-quotes"><span class="section-number">5.9.3.2</span> Left/right quotes</h4>
 <div class="quote-right">
 <blockquote>
 <p>Whenever you find that you are on the side of the majority, it is time to
@@ -5512,7 +5764,7 @@ a quote, just use the blockquote syntax <code>&gt;</code>, e.g.,</p>
 &gt; ---Someone
 :::
 </code></pre>
-<h4 id="sec:margin-embedding"><span class="section-number">5.8.3.3</span> Margin embedding</h4>
+<h4 id="sec:margin-embedding"><span class="section-number">5.9.3.3</span> Margin embedding</h4>
 <p>You can embed elements on the left or right margin using a fenced <code>Div</code> with the
 class <code>.embed-left</code> or <code>.embed-right</code>. These elements will float to the left or
 right and exceed the margin by about 200px, which can save some space in the
@@ -5583,8 +5835,8 @@ text.</p>
 </div>
 <p>We have embedded a table of the first 4 rows of the <code>mtcars</code> data on the right
 margin, which you can see if the browser window is wide enough.</p>
-<h2 id="sec:book"><span class="section-number">5.9</span> HTML books</h2>
-<p>The book style builds on top of the article style (<a class="cross-ref-sec" href="#sec:article">5.8</a>) to turn a
+<h2 id="sec:book"><span class="section-number">5.10</span> HTML books</h2>
+<p>The book style builds on top of the article style (<a class="cross-ref-sec" href="#sec:article">5.9</a>) to turn a
 document with multiple first-level headings (<code>#</code>) into a book, in which each
 <code>&lt;h1&gt;</code> starts a new chapter. You typically load it together with the default and
 article assets:</p>
@@ -5607,25 +5859,25 @@ a <code>Chapter N</code> prefix to the chapter number and a bottom border under 
 chapter title.</p>
 </li>
 <li>
-<p>Styles the per-chapter TOC box (<a class="cross-ref-sec" href="#sec:chapter-toc">5.10</a>).</p>
+<p>Styles the per-chapter TOC box (<a class="cross-ref-sec" href="#sec:chapter-toc">5.11</a>).</p>
 </li>
 </ul>
 <p>The book style is intended for longer documents that are split into chapters. A
 common way to author a book is to write each chapter in a separate <code>.Rmd</code> file
 and combine them via a <code>_litedown.yml</code> config file. See <a class="cross-ref-chp" href="#chp:sites">8</a> for the
 details of building multi-file books and websites.</p>
-<h2 id="sec:chapter-toc"><span class="section-number">5.10</span> Chapter TOC</h2>
+<h2 id="sec:chapter-toc"><span class="section-number">5.11</span> Chapter TOC</h2>
 <pre><code class="language-yaml">js: [&quot;@chapter-toc&quot;]
 </code></pre>
-<p>For books (<a class="cross-ref-sec" href="#sec:book">5.9</a>) with a full-document TOC (<a class="cross-ref-sec" href="#sec:toc">4.1.15</a>), the <code>chapter-toc.js</code>
+<p>For books (<a class="cross-ref-sec" href="#sec:book">5.10</a>) with a full-document TOC (<a class="cross-ref-sec" href="#sec:toc">4.1.15</a>), the <code>chapter-toc.js</code>
 script copies the sub-items of each chapter in the main TOC to the beginning of
 that chapter (right under the <code>&lt;h1&gt;</code>, or after the epigraph if the chapter
 starts with one). This gives readers a local outline of the chapter they are
 about to read, without having to scroll back to the main TOC.</p>
 <p>On wide screens, <code>book.css</code> hides this in-chapter copy by default (since the
 main TOC is already visible in the margin), and only shows it on narrow screens
-or when the page is paginated for printing (<a class="cross-ref-sec" href="#sec:pages">5.12</a>).</p>
-<h2 id="sec:toc-highlight"><span class="section-number">5.11</span> Highlight TOC items</h2>
+or when the page is paginated for printing (<a class="cross-ref-sec" href="#sec:pages">5.14</a>).</p>
+<h2 id="sec:toc-highlight"><span class="section-number">5.12</span> Highlight TOC items</h2>
 <pre><code class="language-yaml">js: [&quot;@toc-highlight&quot;]
 </code></pre>
 <p>As you scroll through a document, <code>toc-highlight.js</code> adds the class <code>active</code> to
@@ -5639,7 +5891,21 @@ item with CSS, e.g., to make it bold:</p>
   font-weight: bold;
 }
 </code></pre>
-<h2 id="sec:pages"><span class="section-number">5.12</span> Paged HTML</h2>
+<h2 id="sec:nav-highlight"><span class="section-number">5.13</span> Highlight the current page in navigation</h2>
+<pre><code class="language-yaml">js: [&quot;@nav-highlight&quot;]
+</code></pre>
+<p><code>nav-highlight.js</code> sets <code>aria-current=&quot;page&quot;</code> on the links in <code>&lt;nav&gt;</code> that point
+to the current page. The file extension <code>.html</code>, <code>index.html</code>, trailing slashes,
+query strings, and hashes are ignored when comparing URLs, so <code>foo.html</code> and
+<code>foo</code> are the same page, but <code>sub/foo.html</code> is not. The <code>site.css</code> asset
+(<a class="cross-ref-sec" href="#sec:site-defaults">8.3.1</a>) underlines such links with the color of the CSS variable
+<code>--accent</code> (<a class="cross-ref-sec" href="#sec:css-variables">5.3.2</a>), which is also the background color of the
+links on hover. You can style the current link with CSS, e.g.,</p>
+<pre><code class="language-css">nav a[aria-current] {
+  font-weight: bold;
+}
+</code></pre>
+<h2 id="sec:pages"><span class="section-number">5.14</span> Paged HTML</h2>
 <pre><code class="language-yaml">css: [&quot;@pages&quot;]
 js: [&quot;@pages&quot;]
 </code></pre>
@@ -5647,8 +5913,10 @@ js: [&quot;@pages&quot;]
 the page into discrete pages of a fixed size (A4 paper by default), which is
 mainly useful for printing the HTML to PDF (e.g., via a browser’s print dialog)
 with proper page headers, footers, and page numbers.</p>
-<p>Pagination is not applied by default because it can be expensive for long
-documents. There are three ways to trigger it:</p>
+<h3 id="sec:trigger-pagination"><span class="section-number">5.14.1</span> Trigger pagination</h3>
+<p>Pagination is not applied by default after you simply load the CSS/JS assets on
+the page, because it completely reorganizes the original page, and can take a
+while for long documents.<sup class="footnote-ref"><a href="#fn-05-assets-1" id="fnref-05-assets-1" data-footnote-ref>10</a></sup> There are four ways to trigger it:</p>
 <ul>
 <li>
 <p>Press the <code>p</code> key on the page to toggle pagination on and off.</p>
@@ -5657,19 +5925,253 @@ documents. There are three ways to trigger it:</p>
 <p>Append the query parameter <code>?paged=1</code> to the page URL.</p>
 </li>
 <li>
-<p>Print the page (or use the browser’s print preview), which fires the
-<code>beforeprint</code> event that automatically paginates the content.</p>
+<p>Print the page (or use the browser’s print preview), which paginates the
+page automatically.</p>
+</li>
+<li>
+<p>Run <code>dispatchEvent(new Event(&quot;pagesjs:paginate&quot;))</code> in JavaScript. This is
+mainly useful for scripts that control a browser. When the pages are ready,
+the event <code>pagesjs:after</code> is fired on <code>window</code> (and <code>pagesjs:before</code> is
+fired before the pagination starts).</p>
 </li>
 </ul>
-<p>The <code>pages.js</code> script moves elements into page boxes so that each page holds as
-much content as possible without overflowing. Elements that are too tall to fit
-on the current page (such as long paragraphs, lists, tables, and code blocks)
-are fragmented across pages. Each page gets a header showing the document title
-and the current section title, and a footer showing the page number. If the
-document has a TOC, dot leaders and page numbers are added to it.</p>
-<p>The <code>pages.css</code> stylesheet defines the paper geometry through CSS variables,
-which you can override to change the paper size and margins, e.g., for US Letter
-paper:</p>
+<p>To print the page to PDF without opening a browser window, use
+<code>xfun::browser_print()</code> (the version of <strong>xfun</strong> needs to be higher than 0.62),
+and ask it to wait until the pages are ready:</p>
+<pre><code class="language-r">xfun::browser_print(
+  &quot;index.html&quot;, wait = c(trigger = &quot;pagesjs:paginate&quot;, event = &quot;pagesjs:after&quot;)
+)
+</code></pre>
+<p>The function asks the page to paginate itself (<code>trigger</code>), waits for the signal
+that the pages are ready (<code>event</code>), and then prints, so the PDF is always
+complete. You can also save a screenshot of the page by using a <code>.png</code> output
+file, or get the HTML (free of JavaScript) of the paginated page with
+<code>xfun::browser_dom()</code>, which accepts the same <code>wait</code> argument.</p>
+<p>The wait matters because some content changes its size on its own when the width
+of its container changes. For example, a flowchart may be drawn horizontally on
+a wide screen but vertically on a narrow page, and the browser redraws it a
+moment <em>after</em> it is moved into a page. To know the final size of such content,
+the script first puts everything on one temporary page of the right width, waits
+for a fraction of a second, and only then starts to break pages. Printing from
+the print dialog of a browser (or <code>xfun::browser_print(&quot;index.html&quot;)</code> without
+<code>wait</code>) cannot wait, so such content may be measured at the wrong size and
+overflow its page. If your document has such content, paginate it first, as in
+the example above.</p>
+<h3 id="sec:pages-events"><span class="section-number">5.14.2</span> Run code before and after pagination</h3>
+<p>The events <code>pagesjs:before</code> and <code>pagesjs:after</code> on <code>window</code> let you change the
+page around pagination. For example, remove the elements that are useful on
+screen but not on paper (such as a comment section or post navigation links)
+before the pages are created:</p>
+<pre><code class="language-js">addEventListener(&quot;pagesjs:before&quot;, () =&gt; {
+  document.querySelectorAll(&quot;.comments, .post-nav&quot;).
+    forEach(el =&gt; el.remove());
+});
+</code></pre>
+<p>Another use is to adapt the page to what the script expects. For example, rename
+the ID of a table of contents (see <a class="cross-ref-sec" href="#sec:pages-other">5.14.5</a>):</p>
+<pre><code class="language-js">addEventListener(&quot;pagesjs:before&quot;, () =&gt; {
+  const toc = document.getElementById(&quot;TableOfContents&quot;);
+  if (toc) toc.id = &quot;TOC&quot;;
+});
+</code></pre>
+<p>After the pages are ready, you can work with them, e.g., report how many pages
+there are:</p>
+<pre><code class="language-js">addEventListener(&quot;pagesjs:after&quot;, () =&gt; {
+  const n = document.querySelectorAll(&quot;.pagesjs-page&quot;).length;
+  console.log(`The document has ${n} pages.`);
+});
+</code></pre>
+<p>Register the listeners before <code>pages.js</code> starts the pagination (e.g., load your
+script before <code>pages.js</code>, as in <a class="cross-ref-sec" href="#sec:pages-other">5.14.5</a>).</p>
+<h3 id="sec:how-elements-are-put-on-pages"><span class="section-number">5.14.3</span> How elements are put on pages</h3>
+<p>The script fills pages one by one with as much content as possible. When an
+element does not fit on the rest of the current page, it is broken into two
+pieces: the first piece stays on the current page, and the rest goes to the next
+page.</p>
+<p>Elements can be broken at any level. A list, a block quote, or a <code>&lt;div&gt;</code> is
+broken between its children (and a child that does not fit is broken in the same
+way), and every piece stays in the same place in the original element. For
+example, if the third-level item of a nested list is moved to the next page, it
+is still indented as much as before, and the numbers of an ordered list continue
+from the previous page. Other elements are broken as follows:</p>
+<ul>
+<li>
+<p>Text (e.g., a paragraph) is broken between lines.</p>
+</li>
+<li>
+<p>A table is broken between rows, and its <code>&lt;thead&gt;</code> and <code>&lt;tfoot&gt;</code> are repeated
+on each page.</p>
+</li>
+<li>
+<p>A code block is broken between lines. Highlighted text that spans multiple
+lines (e.g., a comment) is still highlighted on both pages.</p>
+</li>
+</ul>
+<p>A few elements are never broken: headings, images, SVG, <code>&lt;figure&gt;</code>, <code>.figure</code>,
+<code>&lt;details&gt;</code>, floating or absolutely positioned elements, and flexbox or grid
+containers. You can also keep any element in one piece with the CSS property
+<code>break-inside: avoid</code>:</p>
+<pre><code class="language-css">.keep-together {
+  break-inside: avoid;
+}
+</code></pre>
+<p>An element that is not broken moves to the next page if it does not fit. If it
+is taller than a whole page, it gets a page of its own, which is printed over
+several physical pages (see <a class="cross-ref-sec" href="#sec:pages-troubleshooting">5.14.6</a>).</p>
+<p>The script also tries to make pages look better:</p>
+<ul>
+<li>
+<p>A paragraph is not broken in a way that leaves its last line alone on a new
+page with nothing after it.</p>
+</li>
+<li>
+<p>The title of a callout (<code>&lt;legend&gt;</code>) is not left alone at the bottom of a
+page.</p>
+</li>
+<li>
+<p>If only about one line of a broken block (e.g., the first item of a list)
+would stay on a page, the whole block moves to the next page.</p>
+</li>
+<li>
+<p>A page may be a few pixels too tall (the margin at its bottom is not counted
+either), so that a tiny overflow does not push the last line to a new page
+or make the page scrollable.</p>
+</li>
+</ul>
+<h3 id="sec:page-layout-and-styles"><span class="section-number">5.14.4</span> Page layout and styles</h3>
+<p>The paper size and margins are defined by CSS variables, which you can override.
+<a class="cross-ref-fig" href="#fig:pages-layout">9</a> shows which variable controls which part of a page. Each tab
+is an element of the page (with its class), and the colored areas are the
+spacing set by the variables.</p>
+<style type="text/css">
+.pd-outer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .3em;
+  max-width: 40em;
+  margin: 1em auto;
+  font-size: .85em;
+  line-height: 1.4;
+  code { background: none; border: none; padding: 0; }
+  .tabset { margin: 0 !important; }
+  .tab-pane { padding: 0; }
+  > div { text-align: center; }
+}
+.pd-width, .pd-height {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  &::before, &::after { content: ""; flex: 1; border-top: 1px solid; }
+}
+.pd-width { grid-column: 2; }
+.pd-height {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.pd-paper { grid-column: 2; }
+.pd-margins {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  > div { padding: .3em; }
+  .pd-mt, .pd-mb { grid-column: 1 / -1; }
+  .pd-ml, .pd-mr { writing-mode: vertical-rl; }
+  .pd-ml { transform: rotate(180deg); }
+}
+.pd-margins > div:not(.pd-inner), .pd-gap {
+  background: color-mix(in srgb, orange 35%, transparent);
+}
+.pd-gap { padding: .3em; }
+.pd-inner { padding: 0 !important; background: Canvas; }
+.pd-box { padding: .5em; min-height: 3em; text-align: center; }
+.pd-body { min-height: 8em; }
+</style>
+<div class="figure" id="fig:pages-layout">
+<div class="pd-outer">
+<div class="pd-width">
+<p><code>--paper-width</code></p>
+</div>
+<div class="pd-height">
+<p><code>--paper-height</code></p>
+</div>
+<div class="pd-paper">
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-page&quot;&gt;</code></p>
+<div class="pd-margins">
+<div class="pd-mt">
+<p><code>--paper-margin-top</code></p>
+</div>
+<div class="pd-ml">
+<p><code>--paper-margin-left</code></p>
+</div>
+<div class="pd-inner">
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-header&quot;&gt;</code></p>
+<div class="pd-box">
+<p><code>--page-header-height</code>: <code>data-main-title</code> … <code>data-page-title</code></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="pd-gap">
+<p><code>--page-header-bottom</code></p>
+</div>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-body&quot;&gt;</code></p>
+<div class="pd-box pd-body">
+<pre><code class="language-html">&lt;h2&gt;Title&lt;/h2&gt;
+
+&lt;p&gt;Content...&lt;/p&gt;
+</code></pre>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;*** class=&quot;pagesjs-fragmented my-box&quot;&gt;</code></p>
+<p>A fragmented element.</p>
+</li>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="pd-gap">
+<p><code>--page-footer-top</code></p>
+</div>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-footer&quot;&gt;</code></p>
+<div class="pd-box">
+<p><code>--page-footer-height</code>: <code>data-page-number</code></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="pd-mr">
+<p><code>--paper-margin-right</code></p>
+</div>
+<div class="pd-mb">
+<p><code>--paper-margin-bottom</code></p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="caption">
+<p><span class="ref-number-fig">9</span> The CSS variables and elements of a page.</p>
+</div>
+</div>
+<p>For example, for US Letter paper:</p>
 <pre><code class="language-css">:root {
   --paper-width: 8.5in;
   --paper-height: 11in;
@@ -5679,10 +6181,284 @@ paper:</p>
   --paper-margin-left: 1in;
 }
 </code></pre>
-<p>If <strong>litedown</strong> does not estimate the number of pages for a tall element
-correctly, you can specify the number manually via the <code>data-pages-offset</code>
-attribute on a page element, e.g., <code>&lt;div class=&quot;pagesjs-page&quot; data-pages-offset=&quot;3&quot;&gt;</code>.</p>
-<h2 id="sec:snap"><span class="section-number">5.13</span> HTML slides</h2>
+<p>You can also change the height of the header and the footer of a page, and the
+space between them and the content:</p>
+<pre><code class="language-css">:root {
+  --page-header-height: 40px;
+  --page-header-bottom: 40px;
+  --page-footer-height: 40px;
+  --page-footer-top: 40px;
+}
+</code></pre>
+<p>Each page has a header with the document title (on the left) and the title of
+the current section (on the right), and a footer with the page number. These
+texts come from the attributes <code>data-main-title</code>, <code>data-page-title</code>, and
+<code>data-page-number</code> of the header and footer, so you can change what is shown
+with CSS only, e.g.,</p>
+<pre><code class="language-css">.pagesjs-header::after {
+  content: &quot;Draft &quot; attr(data-page-number);
+}
+</code></pre>
+<p>The document title is the first <code>&lt;h1&gt;</code> with the class <code>title</code>, <code>&lt;h1&gt;</code> in the
+frontmatter (see <a class="cross-ref-sec" href="#sec:pages-other">5.14.5</a>), element with the class <code>title</code>, or <code>&lt;h1&gt;</code> in
+the document, in this order of preference. The section title is the last heading
+(<code>&lt;h2&gt;</code>, or <code>&lt;h1&gt;</code> in a book) before the page, i.e., the section in which the
+page starts. If a heading has the attribute <code>data-short-title</code>, its value is
+used in the header instead of the heading, which is handy when the heading is
+too long.</p>
+<p>These classes help you style the pages:</p>
+<ul>
+<li>
+<p><code>page-odd</code> and <code>page-even</code> on pages, e.g., to put the page number on
+different sides of the footer.</p>
+</li>
+<li>
+<p><code>page-multiple</code> on a page that is too tall and is printed over several
+physical pages.</p>
+</li>
+<li>
+<p><code>pagesjs-fragmented</code> on every piece of a broken element. The first piece
+also has the class <code>fragment-first</code>, and the last piece <code>fragment-last</code>, so
+you can style the pieces differently, e.g., to draw the border of a box only
+where the box is not cut (<code>.my-box</code> is just an example class here, which
+you can replace with any class of your own that draws a border):</p>
+<pre><code class="language-css">.my-box.pagesjs-fragmented {
+  &amp;:not(.fragment-first) { border-top: none; }
+  &amp;:not(.fragment-last) { border-bottom: none; }
+}
+</code></pre>
+<p>By default, the margin, padding, and border are removed where an element is
+cut, and the marker of a list item is shown only once.</p>
+</li>
+</ul>
+<p>If an element is broken, its <code>id</code> is copied to all the pieces, so the same ID
+appears more than once. This is intended: CSS rules that use IDs (such as
+<code>#TOC</code>) still work for all the pieces.</p>
+<p>The table of contents gets dot leaders and page numbers automatically, and the
+footnotes of a page are moved to the bottom of the page. The classes <code>side</code>,
+<code>side-left</code>, and <code>side-right</code> are removed from the table of contents, footnotes,
+and chapter links, because they put these elements in the margins of the screen,
+which does not make sense on a page.</p>
+<h3 id="sec:pages-other"><span class="section-number">5.14.5</span> Paginate other HTML pages</h3>
+<p>The <code>pages</code> assets are not limited to <strong>litedown</strong> output. They can paginate
+any HTML page, e.g., a blog post generated by Hugo. Load them on the page, e.g.,
+from a CDN (or use local copies):</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@xiee/utils/css/pages.min.css&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/@xiee/utils/js/pages.min.js&quot; defer&gt;&lt;/script&gt;
+</code></pre>
+<p>Then press <code>p</code> to paginate the page. The script needs to know which part of the
+page is the <em>content root</em> (the content to be paginated) and which is the
+<em>frontmatter</em> (title, author, etc.). It makes a guess, and you can override
+each guess with a CSS selector in a <code>data-*</code> attribute of <code>&lt;body&gt;</code>:</p>
+<ul>
+<li>
+<p>The content root is the first <code>&lt;main&gt;</code> (or element with <code>role=&quot;main&quot;</code>; if
+it only contains one element, such as <code>&lt;article&gt;</code>, that element is used).
+If there is none, the <code>&lt;article&gt;</code> elements are used, or the whole <code>&lt;body&gt;</code>
+if there is no <code>&lt;article&gt;</code>. Use <code>data-pages-root</code> to choose another root.
+The selector can match multiple elements (e.g., <code>&quot;.home, .main&quot;</code>), and each
+of them is a root. If it matches nothing, the guess above is used.</p>
+</li>
+<li>
+<p>The frontmatter is the <code>&lt;header&gt;</code> that is a direct child of <code>&lt;body&gt;</code>. Use
+<code>data-pages-front</code> to choose other elements (e.g., the <code>&lt;div&gt;</code> that has the
+title of a blog post), or a selector that matches nothing if there is no
+frontmatter. The title in the frontmatter is also used as the running title
+in page headers.</p>
+</li>
+</ul>
+<pre><code class="language-html">&lt;body data-pages-root=&quot;.main&quot; data-pages-front=&quot;.article-meta&quot;&gt;
+</code></pre>
+<p>The rest of the page (e.g., the navigation bar and sidebar) is hidden.</p>
+<p>If the page has a table of contents, its ID must be <code>TOC</code> (e.g.,
+<code>&lt;nav id=&quot;TOC&quot;&gt;</code>), so that the script can find it, put it on its own page, and
+add page numbers to its links. Other IDs, such as the <code>TableOfContents</code> that
+Hugo uses by default, are not recognized (you can rename it in a <code>pagesjs:before</code>
+listener, see <a class="cross-ref-sec" href="#sec:pages-events">5.14.2</a>).</p>
+<p>If you cannot edit <code>&lt;body&gt;</code> (e.g., it is generated by a theme), set the
+attributes with a script instead. Pagination starts only after the page is
+fully loaded, so the script can run any time before that, as long as it is
+loaded before <code>pages.js</code>:</p>
+<pre><code class="language-html">&lt;script src=&quot;pages-data.js&quot; defer&gt;&lt;/script&gt;
+&lt;script src=&quot;pages.min.js&quot; defer&gt;&lt;/script&gt;
+</code></pre>
+<p>where <code>pages-data.js</code> is:</p>
+<pre><code class="language-js">Object.assign(document.body.dataset, {
+  pagesRoot: &quot;.main&quot;, pagesFront: &quot;.article-meta&quot;
+});
+</code></pre>
+<p>Because the content moves into pages, CSS rules that depend on the elements
+around it (e.g., <code>article h2</code> or <code>main h2</code>) would stop working. To avoid this,
+each page contains an empty copy of the content root and the elements around it,
+so these rules still apply. The layout of the copies (e.g., their width,
+margins, padding, and background) is reset so that they do not affect the page.</p>
+<p>A document with more than one <code>&lt;h1&gt;</code> is treated as a book. Every chapter (an
+element that contains an <code>&lt;h1&gt;</code>), the frontmatter, and the table of contents
+start on a new page, and the section title in the header is the <code>&lt;h1&gt;</code> instead
+of the <code>&lt;h2&gt;</code>.</p>
+<p>For example, suppose the page has the structure below before pagination. The
+<code>&lt;article&gt;</code> is the content root because it is the only child of <code>&lt;main&gt;</code>, and
+the <code>&lt;nav&gt;</code> is outside the content root. Each tab is an element, and its content
+is its children, stacked like the real DOM tree:</p>
+<style type="text/css">
+.dom-tree {
+  .tabset { margin: .3em 0; }
+  .tab-pane {
+    padding: .3em .5em .3em 1em;
+    border-radius: 0 5px 5px 5px;
+    background: color-mix(in srgb, orange 9%, transparent);
+    border-color: color-mix(in srgb, orange 60%, transparent);
+  }
+  > .tabset > .tab-pane { background: none; }
+  .tab-link.active { background: Canvas; }
+  .tab-link { border-color: color-mix(in srgb, orange 60%, transparent); }
+  pre { margin: .3em 0 0; }
+  pre, code { background: none !important; }
+  pre > code { padding: .2em 0; border: none; }
+}
+</style>
+<div class="dom-tree">
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;body&gt;</code></p>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;header&gt;</code></p>
+<pre><code class="language-html">...
+</code></pre>
+</li>
+</ul>
+</div>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;nav&gt;</code></p>
+<pre><code class="language-html">...
+</code></pre>
+</li>
+</ul>
+</div>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;main&gt;</code></p>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;article&gt;</code></p>
+<pre><code class="language-html">&lt;h2&gt;Section A&lt;/h2&gt;
+&lt;p&gt;A long paragraph...&lt;/p&gt;
+&lt;h2&gt;Section B&lt;/h2&gt;
+</code></pre>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<p>If the long paragraph is broken into two pieces by the page boundary, the
+structure after pagination is roughly as follows (the front matter, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and
+the header and footer of the second page are omitted):</p>
+<div class="dom-tree">
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;body class=&quot;pagesjs&quot;&gt;</code></p>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-page page-odd&quot;&gt;</code></p>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-header&quot; data-main-title=&quot;...&quot;&gt;</code></p>
+<pre><code class="language-html">...
+</code></pre>
+</li>
+</ul>
+</div>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-body&quot;&gt;</code></p>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;article class=&quot;pagesjs-wrap&quot;&gt;</code></p>
+<pre><code class="language-html">&lt;h2&gt;Section A&lt;/h2&gt;
+&lt;p class=&quot;pagesjs-fragmented fragment-first&quot;&gt;A long paragraph...&lt;/p&gt;
+</code></pre>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-footer&quot; data-page-number=&quot;1&quot;&gt;</code></p>
+<pre><code class="language-html">...
+</code></pre>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-page page-even&quot;&gt;</code></p>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;div class=&quot;pagesjs-body&quot;&gt;</code></p>
+<div class="tabset">
+<ul>
+<li>
+<p><code>&lt;article class=&quot;pagesjs-wrap&quot;&gt;</code></p>
+<pre><code class="language-html">&lt;p class=&quot;pagesjs-fragmented fragment-last&quot;&gt;...the rest.&lt;/p&gt;
+&lt;h2&gt;Section B&lt;/h2&gt;
+</code></pre>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<p>Note that the <code>&lt;main&gt;</code> and <code>&lt;article&gt;</code> on each page are not the originals: they
+are empty copies (<code>pagesjs-wrap</code>) made for every page, and the content is moved
+into them.</p>
+<p>You can also create pages yourself with <code>&lt;div class=&quot;pagesjs-page&quot;&gt;</code>. An empty
+one is a page break (the content after it goes into this page). One that already
+has content is kept as it is, and the content after it starts on a new page.</p>
+<h3 id="sec:pages-troubleshooting"><span class="section-number">5.14.6</span> Troubleshooting</h3>
+<p>If an element that cannot be broken is taller than a page, the script cannot
+make it fit, so the page is marked with the class <code>page-multiple</code> and printed
+over several physical pages. The number of these pages is estimated for the page
+numbers. If the estimate is wrong, give the right number via the attribute
+<code>data-pages-offset</code> of the page, e.g.,
+<code>&lt;div class=&quot;pagesjs-page&quot; data-pages-offset=&quot;3&quot;&gt;</code>.</p>
+<p>If something looks different after pagination, remember that the content has
+been moved: CSS rules that depend on the position of an element (such as
+<code>main &gt; p</code>, <code>:first-child</code>, or sibling selectors) may not apply to the pieces of
+a broken element. Use the classes <code>pagesjs-fragmented</code>, <code>fragment-first</code>, and
+<code>fragment-last</code> to style the pieces.</p>
+<h2 id="sec:snap"><span class="section-number">5.15</span> HTML slides</h2>
 <p>With <code>snap.css</code> and <code>snap.js</code>, you can create lightweight HTML slides:</p>
 <pre><code class="language-yaml">css: [&quot;@default&quot;, &quot;@snap&quot;]
 js: [&quot;@snap&quot;]
@@ -5692,7 +6468,7 @@ Snap</a>
 technique: each slide is a full-screen section, and scrolling snaps from one
 slide to the next. The <code>snap.js</code> script does the work of grouping the content
 into slide containers, and <code>snap.css</code> styles them.</p>
-<h3 id="sec:creating-slides"><span class="section-number">5.13.1</span> Creating slides</h3>
+<h3 id="sec:creating-slides"><span class="section-number">5.15.1</span> Creating slides</h3>
 <p>Once the assets are loaded, the document is split into slides. There are two
 ways to start a new slide: a horizontal rule (<code>---</code>), or a level-two section
 heading (<code>##</code>). Pick only one way in a document. For example, with horizontal
@@ -5723,7 +6499,7 @@ Content.
 it is tall, and at least 992px wide). On narrower windows or mobile devices, it
 falls back to a normal continuous article, so the same document reads fine on a
 phone.</p>
-<h3 id="sec:navigating-and-presenting"><span class="section-number">5.13.2</span> Navigating and presenting</h3>
+<h3 id="sec:navigating-and-presenting"><span class="section-number">5.15.2</span> Navigating and presenting</h3>
 <p>Since slides are just a scrollable page, you can navigate with the usual scroll
 wheel, arrow keys, or <code>PageUp</code> / <code>PageDown</code>. In addition, <code>snap.js</code> provides a
 few keyboard shortcuts:</p>
@@ -5745,7 +6521,7 @@ appends <code>#N</code> to the URL, so you can link directly to a specific slide
 is shown at the bottom left (starting when you go fullscreen); click it to
 restart. You can turn it into a countdown timer by adding your own
 <code>&lt;span class=&quot;timer&quot; data-total=&quot;1200&quot;&gt;&lt;/span&gt;</code> (seconds).</p>
-<h3 id="sec:styling-slides"><span class="section-number">5.13.3</span> Styling slides</h3>
+<h3 id="sec:styling-slides"><span class="section-number">5.15.3</span> Styling slides</h3>
 <p>You can add attributes to an individual slide with an HTML comment that starts
 with <code>#</code>, whose content is plain HTML attributes applied to the slide container,
 e.g.,</p>
@@ -5771,7 +6547,7 @@ e.g.,</p>
 background image through its <code>style</code> attribute, and a slide with the
 <code>contenteditable</code> attribute can be edited live during a presentation (edits are
 not saved).</p>
-<h3 id="sec:printing-and-themes"><span class="section-number">5.13.4</span> Printing and themes</h3>
+<h3 id="sec:printing-and-themes"><span class="section-number">5.15.4</span> Printing and themes</h3>
 <p>When printed, slides are rendered as a continuous document with a smaller font
 to save paper; if you want one slide per page, print from the overview mode or
 add print CSS (<code>@media print</code>). For a fixed aspect ratio (useful when presenting
@@ -5780,8 +6556,8 @@ on an unknown screen), set the CSS variable <code>--slide-ratio</code>, e.g.,
 <p>The alternative theme <code>snap-clean.css</code> provides a cleaner, more minimal slide
 style; load it after <code>snap.css</code>, e.g., <code>css: [&quot;@default&quot;, &quot;@snap&quot;, &quot;@snap-clean&quot;]</code>.</p>
 <p>There are more features and caveats than can be covered here. For the full
-guide, see <code>vignette('slides', package = 'litedown')</code>.</p>
-<h2 id="sec:right-quote"><span class="section-number">5.14</span> Right-align a quote footer</h2>
+guide, see <a href="https://pkg.yihui.org/litedown/examples/045-snap-slides.html">https://pkg.yihui.org/litedown/examples/045-snap-slides.html</a>.</p>
+<h2 id="sec:right-quote"><span class="section-number">5.16</span> Right-align a quote footer</h2>
 <p>You can use the script <code>right-quote.js</code> to right-align a blockquote footer if it
 starts with an em-dash (<code>---</code>). More precisely, the script right-aligns any
 paragraph (<code>&lt;p&gt;</code>) whose text starts with an em-dash (<code>—</code>, <code>―</code>, or <code>---</code>), which
@@ -5794,7 +6570,7 @@ of our inner voice. Why should we fry each of our actions like a piece of cake
 on a sensible frying pan?</p>
 <p>—Milan Kundera, <em>Immortal</em></p>
 </blockquote>
-<h2 id="sec:center-img"><span class="section-number">5.15</span> Center images</h2>
+<h2 id="sec:center-img"><span class="section-number">5.17</span> Center images</h2>
 <pre><code class="language-yaml">js: [&quot;@center-img&quot;]
 </code></pre>
 <p>The <code>center-img.js</code> script horizontally centers an image (<code>&lt;img&gt;</code>), video
@@ -5803,7 +6579,7 @@ paragraph. For a standalone <code>&lt;img&gt;</code> that is not already wrapped
 script also wraps it in a link pointing to the image source, so readers can
 click on it to open the full image. In addition, a paragraph containing only the
 horizontal rule marker <code>* * *</code> is centered.</p>
-<h2 id="sec:external-link"><span class="section-number">5.16</span> Open external links in new windows</h2>
+<h2 id="sec:external-link"><span class="section-number">5.18</span> Open external links in new windows</h2>
 <pre><code class="language-yaml">js: [&quot;@external-link&quot;]
 </code></pre>
 <p>The <code>external-link.js</code> script identifies external links (those whose <code>href</code>
@@ -5812,7 +6588,7 @@ so they open in a new tab or window. Links that do not have a <code>title</code>
 get one set to their (decoded) URL, which shows as a tooltip on hover. For a
 bare link whose text is identical to its URL, the leading protocol (and a
 trailing hash) is stripped from the displayed text to make it shorter.</p>
-<h2 id="sec:key-buttons"><span class="section-number">5.17</span> Style keyboard shortcuts</h2>
+<h2 id="sec:key-buttons"><span class="section-number">5.19</span> Style keyboard shortcuts</h2>
 <p>The script <code>key-buttons.js</code> identifies keys and the CSS styles them, which can
 be useful for <a href="https://yihui.org/en/2023/02/key-buttons/">showing keyboard
 shortcuts</a>.</p>
@@ -5837,38 +6613,12 @@ separator is kept between them.</p>
 <p>For example, <code>`Ctrl + Alt + Delete`</code> becomes <code>Ctrl + Alt + Delete</code>.</p>
 <p>Of course, you can combine any number of JS scripts and CSS files if you want
 multiple features.</p>
-<h2 id="sec:arbitrary-assets"><span class="section-number">5.18</span> Include arbitrary CSS/JS</h2>
-<p>You can include arbitrary CSS frameworks and JS libraries in your documents, not
-limited to aforementioned ones in the GitHub repository <code>yihui/lite.js</code>. Below
-is a quick example of using the
-<a href="https://github.com/fiduswriter/simple-datatables/">simple-datatables</a> library
-to create interactive tables:</p>
-<pre><code class="language-md">---
-title: Display Tables with the JS Library DataTables
-output:
-  html:
-    meta:
-      css: [&quot;@default&quot;, &quot;@npm/simple-datatables/dist/style&quot;]
-      js: [&quot;@npm/simple-datatables&quot;]
----
-
-::: {#mtcars-table}
-```{r}
-I(mtcars)
-```
-:::
-
-```{js, type = &quot;module&quot;}
-new simpleDatatables.DataTable('#mtcars-table &gt; table');
-```
-</code></pre>
-<p>See <a class="cross-ref-sec" href="#sec:simple-dt">6.2</a> for more ways to create this type of table.</p>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/06-widgets.Rmd">
+</article>
+<article class="chapter" data-source="book/06-widgets.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/06-widgets.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/06-widgets.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:widgets"><span class="section-number main-number">6</span> HTML Widgets</h1>
 <div class="epigraph">
@@ -5964,7 +6714,7 @@ to write raw JS code in an R character string, mark the string with a special
 class, and <code>eval()</code> the string on the JS side. Although <a href="https://rstudio.github.io/DT/002-rowdetails.html">it works
 fine</a>, such “special strings”
 still feel like square pegs in round holes, and the scary <code>eval()</code> will make
-them fit.<sup class="footnote-ref"><a href="#fn-06-widgets-1" id="fnref-06-widgets-1" data-footnote-ref>10</a></sup> The <strong>litedown</strong> approach makes you write (nearly) pure
+them fit.<sup class="footnote-ref"><a href="#fn-06-widgets-1" id="fnref-06-widgets-1" data-footnote-ref>11</a></sup> The <strong>litedown</strong> approach makes you write (nearly) pure
 JS, and you can do whatever JS allows you to do.</p>
 <p>However, I need to warn you that you may have to write a lot more boilerplate
 code with this approach. This problem could be solved by providing R helper
@@ -5996,7 +6746,7 @@ widget’s variables by accident.</p>
 </li>
 </ol>
 <p>With that in mind, let’s start looking at the boring way to generate HTML
-widgets. Plain oatmeal is a bowl of sadness.<sup class="footnote-ref"><a href="#fn-06-widgets-2" id="fnref-06-widgets-2" data-footnote-ref>11</a></sup> So is this chapter
+widgets. Plain oatmeal is a bowl of sadness.<sup class="footnote-ref"><a href="#fn-06-widgets-2" id="fnref-06-widgets-2" data-footnote-ref>12</a></sup> So is this chapter
 (of plain JS).</p>
 <h2 id="sec:simple-dt"><span class="section-number">6.2</span> Simple DataTables</h2>
 <pre><code class="language-md" data-file="021.Rmd" data-output="021-simple-datatables.html">---
@@ -6187,10 +6937,10 @@ new Chart(ctx, {
 </code></pre>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/07-editor.Rmd">
+</article>
+<article class="chapter" data-source="book/07-editor.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/07-editor.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/07-editor.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:authoring"><span class="section-number main-number">7</span> Authoring</h1>
 <div class="epigraph">
@@ -6289,8 +7039,8 @@ existing filenames are marked with ❌ so that you do not accidentally overwrite
 them). If you do not provide a filename extension, <code>.Rmd</code> will be appended
 automatically.</p>
 <p>For <code>.Rmd</code> / <code>.md</code> / <code>.R</code> files, you can also select HTML features via
-checkboxes, such as callouts (<a class="cross-ref-sec" href="#sec:callout">5.6</a>), tabsets (<a class="cross-ref-sec" href="#sec:tabsets">5.4</a>), and the
-article format (<a class="cross-ref-sec" href="#sec:article">5.8</a>). See <a class="cross-ref-tab" href="#tab:assets">4</a> for the full list of features.
+checkboxes, such as callouts (<a class="cross-ref-sec" href="#sec:callout">5.7</a>), tabsets (<a class="cross-ref-sec" href="#sec:tabsets">5.5</a>), and the
+article format (<a class="cross-ref-sec" href="#sec:article">5.9</a>). See <a class="cross-ref-tab" href="#tab:assets">4</a> for the full list of features.
 The corresponding CSS/JS assets will be added to the YAML metadata of the new
 file automatically.</p>
 <p>The new file will be seeded with a YAML frontmatter containing a placeholder
@@ -6336,10 +7086,10 @@ knit: litedown:::knit
 </code></pre>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/08-site.Rmd">
+</article>
+<article class="chapter" data-source="book/08-site.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/08-site.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/08-site.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:sites"><span class="section-number main-number">8</span> Books and Websites</h1>
 <div class="epigraph">
@@ -6415,7 +7165,7 @@ one place. With this option set, you can print <code>litedown::timing_data()</co
 last chapter to see the timing data for the whole book. Remember to delete the
 data file when you no longer need it.</p>
 <h3 id="sec:previewing-a-single-chapter"><span class="section-number">8.2.1</span> Previewing a single chapter</h3>
-<p>Rendering a whole book may be time-consuming<sup class="footnote-ref"><a href="#fn-08-site-1" id="fnref-08-site-1" data-footnote-ref>12</a></sup> and unnecessary when
+<p>Rendering a whole book may be time-consuming<sup class="footnote-ref"><a href="#fn-08-site-1" id="fnref-08-site-1" data-footnote-ref>13</a></sup> and unnecessary when
 you work on a book. It may be easier to only preview the single chapter that you
 currently work on. The preview can be done with <code>litedown::roam()</code>:</p>
 <ul>
@@ -6490,8 +7240,8 @@ layout elements so that pages look reasonable without any configuration:</p>
 <li>
 <p>The default CSS assets are
 <code>@default</code>, <code>@article</code>, <code>@copy-button</code>, <code>@heading-anchor</code>, and <code>@pages</code>, and the default
-JS assets are <code>@sidenotes</code>, <code>@appendix</code>, <code>@toc-highlight</code>, <code>@copy-button</code>, <code>@heading-anchor</code>, and <code>@pages</code>. In
-other words, each page uses the article format (<a class="cross-ref-sec" href="#sec:article">5.8</a>) by default.</p>
+JS assets are <code>@sidenotes</code>, <code>@appendix</code>, <code>@toc-highlight</code>, <code>@copy-button</code>, <code>@heading-anchor</code>, <code>@pages</code>, and <code>nav-highlight</code>. In
+other words, each page uses the article format (<a class="cross-ref-sec" href="#sec:article">5.9</a>) by default.</p>
 </li>
 <li>
 <p>If <code>include_before</code> is not provided, a navigation menu is automatically
@@ -6529,8 +7279,8 @@ or a website.</p>
 <p>A series of helper functions have been provided in <strong>litedown</strong> to get various
 information about the package, such as the package description (<code>pkg_desc()</code>),
 news (<code>pkg_news()</code>), citation (<code>pkg_citation()</code>), source code (<code>pkg_code()</code>),
-and all manual pages (<code>pkg_manual()</code>). You can call these functions in code
-chunks to print out the desired information.</p>
+vignettes (<code>pkg_articles()</code>), and all manual pages (<code>pkg_manual()</code>). You can
+call these functions in code chunks to print out the desired information.</p>
 <p>For example, you may call them in the appendix (<a class="cross-ref-sec" href="#sec:appendices">3.3.6</a>) of a book:</p>
 <pre><code class="language-md"># Appendix {.appendix}
 
@@ -6582,22 +7332,22 @@ first, because rendering the site requires the installed version of it, e.g.,
 <code>pkg_manual()</code> reads its help database, and <code>articles.Rmd</code> lists its built
 vignettes.</p>
 <p>The template lives under <code>system.file('site', package = 'litedown')</code> and contains
-the following <code>.Rmd</code> files (explained in <a class="cross-ref-tab" href="#tab:pkg-site">5</a>):</p>
-<pre><code class="language-r">list.files(system.file('site', package = 'litedown'), '[.]Rmd$')
+the following files (explained in <a class="cross-ref-tab" href="#tab:pkg-site">7</a>):</p>
+<pre><code class="language-r">list.files(system.file('site', package = 'litedown'), '[.]R?md$')
 </code></pre>
-<pre><code>#&gt; [1] &quot;_footer.Rmd&quot;  &quot;articles.Rmd&quot; &quot;code.Rmd&quot;     &quot;examples.Rmd&quot; &quot;index.Rmd&quot;   
+<pre><code>#&gt; [1] &quot;_footer.md&quot;   &quot;articles.Rmd&quot; &quot;code.Rmd&quot;     &quot;examples.Rmd&quot; &quot;index.Rmd&quot;   
 #&gt; [6] &quot;manual.Rmd&quot;   &quot;news.Rmd&quot;    
 </code></pre>
 <div class="table">
 <div class="caption">
-<p><span class="ref-number-tab">5</span> Explanations of site source files.</p>
+<p><span class="ref-number-tab">7</span> Explanations of site source files.</p>
 </div>
 <table>
 <thead>
 <tr>
-<th>source</th>
-<th>description</th>
-<th>content</th>
+<th>Source</th>
+<th>Description</th>
+<th>Content</th>
 </tr>
 </thead>
 <tbody>
@@ -6609,7 +7359,7 @@ the following <code>.Rmd</code> files (explained in <a class="cross-ref-tab" hre
 <tr>
 <td><code>articles</code></td>
 <td>package vignettes</td>
-<td>the <code>doc/</code> folder of the installed package</td>
+<td><code>pkg_articles()</code> (the <code>doc/</code> folder of the installed package)</td>
 </tr>
 <tr>
 <td><code>code</code></td>
@@ -6634,16 +7384,22 @@ the following <code>.Rmd</code> files (explained in <a class="cross-ref-tab" hre
 <tr>
 <td><code>_footer</code></td>
 <td>page footer</td>
-<td>package authors</td>
+<td>the package authors, a link to edit the page on GitHub, and the <strong>litedown</strong> version</td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>In <code>_footer.md</code>, <code>$authors$</code> (authors with the role <code>aut</code>), <code>$version$</code> (the
+<strong>litedown</strong> version), and <code>$edit$</code> (the GitHub URL for editing the current
+page) are replaced by their values when the site is built.</p>
 <p>Files that already exist in the site directory are never overwritten by the
 template, so you can customize any page by putting your own version of it in the
-site directory and committing it to your repository.</p>
-<p>The <code>exclude</code> argument allows you to exclude certain pages from the site. By
-default, <code>code.Rmd</code> is excluded, and</p>
+site directory and committing it to your repository. The source files copied from
+the template (e.g., <code>manual.Rmd</code> and <code>_litedown.yml</code>) are removed after the site
+is built, so the site directory only keeps your own files and the output.</p>
+<p>You can exclude certain template pages from the site via the field <code>exclude</code>
+under <code>site</code> in <code>_litedown.yml</code> in the site directory (the pages will not be
+copied). By default, <code>code.Rmd</code> is excluded, and</p>
 <ul>
 <li>
 <p><code>articles.Rmd</code> is excluded if the package does not have the <code>vignettes/</code>
@@ -6659,15 +7415,78 @@ the package.</p>
 </li>
 </ul>
 <p>For example, if you do not want to include the news (or the source code,
-either), you can use <code>exclude = c('code.Rmd', 'news.Rmd')</code>.</p>
-<p>If the package contains a book project (i.e., <code>docs/_litedown.yml</code> exists), the
+either), you can use <code>exclude: [code.Rmd, news.Rmd]</code>. To exclude nothing, use
+<code>exclude: NA</code>.</p>
+<p>If the package contains a book project (i.e., <code>book/_litedown.yml</code> exists), the
 book will be built with <code>fuse_book()</code> and published under the <code>book/</code> subpage of
 the site.</p>
+<p>On the home page, badges in <code>README.md</code> (between the comments <code>&lt;!-- badges: start --&gt;</code> and <code>&lt;!-- badges: end --&gt;</code>) are put in the right sidebar, and the
+<code>Links</code> field there omits the URL of the package site itself
+(<code>https://USER.github.io/PKG/</code> is detected automatically, or you can set it via
+<code>url</code> under <code>site</code> in <code>_litedown.yml</code>). If the <code>BugReports</code> field of
+<code>DESCRIPTION</code> points to a GitHub repository, the navigation menu gets a GitHub
+icon on the right.</p>
 <p>If you publish the site to GitHub Pages yourself instead of using the GitHub
-action (<a class="cross-ref-sec" href="#sec:pkg-site-gha">8.4.3</a>), remember to create an empty <code>.nojekyll</code> file in the
+action (<a class="cross-ref-sec" href="#sec:pkg-site-gha">8.4.4</a>), remember to create an empty <code>.nojekyll</code> file in the
 site directory, because Jekyll ignores files and directories whose names start
 with <code>_</code>, such as the <code>_footer.md</code> used by the template.</p>
-<h3 id="sec:pkg-site-gha"><span class="section-number">8.4.3</span> Package sites via GitHub Action</h3>
+<h4 id="sec:pkg-site-groups"><span class="section-number">8.4.2.1</span> Grouping manual pages, articles, and examples</h4>
+<p>By default, <code>pkg_manual()</code> lists all topics alphabetically, and <code>pkg_articles()</code>
+and <code>pkg_examples()</code> list all vignettes and examples in a single list. To
+organize them into groups (like the <code>reference</code> and <code>articles</code> fields of
+<code>_pkgdown.yml</code>), add the fields <code>manual</code>, <code>articles</code>, and <code>examples</code> under
+<code>site</code> in <code>_litedown.yml</code> in the site directory. The keys are group titles, and each value is either a vector of names or a map with a
+description <code>desc</code> and the names <code>contents</code>:</p>
+<pre><code class="language-yaml">site:
+  manual:
+    Render documents:
+      desc: Convert Markdown and R Markdown to output formats
+      contents: [mark, fuse, &quot;html_*&quot;]
+    Others: [crack, engines]
+  articles:
+    Guides: [&quot;*intro*&quot;]
+  examples:
+    Basics: [&quot;00*&quot;]
+</code></pre>
+<p>Names in <code>contents</code> are matched against the topics and Rd filenames of help
+pages (for <code>manual</code>), or the filenames (without extensions) and titles of
+vignettes (for <code>articles</code>), or the filenames and titles of the example files
+(for <code>examples</code>). The wildcards <code>*</code> and <code>?</code> are supported. The first
+group that matches an item wins, and the items that do not belong to any group
+are put in a group named <code>Other</code>. The page then shows the groups in the order
+that you specify. For the manual, the groups are also listed in an index at the
+top of the page.</p>
+<p>If a name matches nothing (e.g., a function that has been renamed), an error is
+signaled, so that stale configurations do not go unnoticed. Help pages with the
+keyword <code>internal</code> (e.g., the page of re-exported functions) are hidden by
+default, and listed only if a group names them. You can also pass the groups to
+the <code>groups</code> argument of <code>pkg_manual()</code>, <code>pkg_articles()</code>, and <code>pkg_examples()</code>
+as a list of lists with the fields <code>title</code>, <code>desc</code>, and <code>contents</code>.</p>
+<h3 id="sec:package-playground"><span class="section-number">8.4.3</span> Package playground</h3>
+<p>The site template also includes a <code>playground/</code> subpage, which provides an
+interactive R playground powered by <a href="https://r-wasm.org">webR</a>. It installs
+<strong>litedown</strong> and its dependencies in the browser and lets users write and run R
+code or render R Markdown documents without a server or a local R installation
+(yes, it works on your mobile device, too!).</p>
+<p>The playground can be customized by adding files to the <code>playground/</code>
+directory under the site directory (e.g., <code>site/playground/</code>). The following
+files are recognized:</p>
+<ul>
+<li>
+<p><code>_default.Rmd</code> (or <code>_default.R</code>): the content pre-loaded in the editor when
+the playground opens. The <code>.Rmd</code> version is tried first; if it does not
+exist, the <code>.R</code> version is tried.</p>
+</li>
+<li>
+<p><code>setup.R</code>: an R script executed once in the webR session after packages are
+installed. It is a good place to install/load the package under
+documentation<sup class="footnote-ref"><a href="#fn-08-site-2" id="fnref-08-site-2" data-footnote-ref>14</a></sup> and define any helpers that users might need.</p>
+</li>
+</ul>
+<p>If the package has an <code>examples/</code> directory, the <code>.Rmd</code>/<code>.R</code> files under it will
+show up in the “Load example…” dropdown of the playground. Selecting an
+example loads its source into the editor.</p>
+<h3 id="sec:pkg-site-gha"><span class="section-number">8.4.4</span> Package sites via GitHub Action</h3>
 <p>You may use GitHub Actions to automatically build and deploy package websites.
 The key is to call <code>litedown::pkg_site()</code>. I have provided <a href="https://github.com/yihui/actions/blob/main/litedown-site/action.yml">a simple GitHub
 action</a> in the
@@ -6678,41 +7497,101 @@ to your GitHub workflow to use it.</p>
 repository settings (<code>Settings</code> → <code>Pages</code> → <code>Build and deployment</code> → <code>Source</code> →
 <code>GitHub Actions</code>).</p>
 </div>
-<p>Below is <a href="https://github.com/yihui/litedown/blob/main/.github/workflows/github-pages.yml">the full
+<p>Below is <a href="https://github.com/yihui/litedown/blob/main/.github/workflows/litedown-site.yml">the full
 workflow</a>
 for building and publishing <strong>litedown</strong>’s site to GitHub Pages:</p>
-<pre><code class="language-yaml" data-file="github-pages.yml" data-source="1">name: Build and deploy package site
+<pre><code class="language-yaml" data-file="litedown-site.yml" data-source="1">name: Package site
 
 on:
   push:
-    branches: [&quot;main&quot;]
+    branches: [&quot;main&quot;, &quot;master&quot;]
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+  delete:
 
 permissions:
   contents: write
+  pull-requests: write # comment the preview URL
+
+env:
+  SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
 
 jobs:
-  deploy:
+  # The domain of the PR preview (&lt;owner&gt;-&lt;repo&gt;-pr-&lt;N&gt;.surge.sh), derived once
+  # and shared by the jobs below.
+  preview:
     runs-on: ubuntu-latest
+    outputs:
+      domain: ${{ steps.domain.outputs.domain }}
     steps:
-      - uses: actions/checkout@HEAD
-      - uses: r-lib/actions/setup-r@HEAD
+      - id: domain
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REF: ${{ github.event.ref }}
+        run: |
+          if [ &quot;${{ github.event_name }}&quot; = &quot;pull_request&quot; ]; then
+            num=&quot;${{ github.event.pull_request.number }}&quot;
+          elif [ &quot;${{ github.event_name }}&quot; = &quot;delete&quot; ]; then
+            num=$(gh pr list --repo &quot;${{ github.repository }}&quot; --state all \
+              --head &quot;$REF&quot; --json number --jq '.[0].number // empty')
+          fi
+          if [ -n &quot;$num&quot; ]; then
+            name=$(echo &quot;${{ github.repository }}-pr-$num&quot; |
+              tr 'A-Z' 'a-z' | tr -c 'a-z0-9\n' '-')
+            echo &quot;domain=$name.surge.sh&quot; &gt;&gt; &quot;$GITHUB_OUTPUT&quot;
+          fi
+
+  deploy:
+    needs: preview
+    # Skip closed PRs (see teardown) and fork PRs, which cannot read the secret
+    # or write to the repo.
+    if: &gt;-
+      github.event_name == 'push' || (
+      github.event_name == 'pull_request' &amp;&amp;
+      github.event.action != 'closed' &amp;&amp;
+      github.event.pull_request.head.repo.full_name == github.repository)
+    # One run per ref; a new push supersedes the previous one.
+    concurrency:
+      group: site-${{ github.ref }}
+      cancel-in-progress: true
+    runs-on: macos-latest
+    env:
+      PREVIEW_DOMAIN: ${{ needs.preview.outputs.domain }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
-      - uses: yihui/actions/setup-r-dependencies@HEAD
+      - uses: yihui/actions/setup-r-dependencies@v1.4.2
         with:
-          extra-packages: litedown xfun .
+          extra-packages: litedown .
           r-universe: yihui
       - uses: yihui/actions/litedown-site@HEAD
         with:
           site-dir: 'site'
+      - name: Deploy PR preview to surge
+        if: github.event_name == 'pull_request' &amp;&amp; env.SURGE_TOKEN != ''
+        run: |
+          npm install -g surge
+          surge ./site &quot;$PREVIEW_DOMAIN&quot;
+      - name: Comment preview URL
+        if: github.event_name == 'pull_request' &amp;&amp; env.SURGE_TOKEN != ''
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: surge-preview
+          message: |
+            Site preview: https://${{ env.PREVIEW_DOMAIN }}
+
+            Updates on every push; removed when this PR closes.
       - name: Deploy to gh-pages
+        if: github.event_name == 'push'
         run: |
           tmp=$(mktemp -d)
           cp -r site/. &quot;$tmp&quot;
           git config user.name &quot;github-actions[bot]&quot;
           git config user.email &quot;41898282+github-actions[bot]@users.noreply.github.com&quot;
           if git fetch origin gh-pages; then
-            git switch gh-pages
+            git switch -f gh-pages
           else
             git switch --orphan gh-pages
             git rm -rf . 2&gt;/dev/null || true
@@ -6721,24 +7600,51 @@ jobs:
           cp -r &quot;$tmp&quot;/. .
           git add -A
           git diff --cached --quiet || (git commit -m &quot;deploy site&quot; &amp;&amp; git push origin gh-pages)
+
+  # Remove the preview of a PR. A deleted branch is the primary trigger, since
+  # deleting the branch at merge time cancels `closed` runs; `closed` covers PRs
+  # whose branch is kept. Teardown is idempotent.
+  teardown:
+    needs: preview
+    # Ignore tag deletions; only branches map to a preview.
+    if: &gt;-
+      github.event.action == 'closed' ||
+      (github.event_name == 'delete' &amp;&amp; github.event.ref_type == 'branch')
+    runs-on: ubuntu-latest
+    env:
+      PREVIEW_DOMAIN: ${{ needs.preview.outputs.domain }}
+    steps:
+      - name: Teardown preview
+        if: env.SURGE_TOKEN != '' &amp;&amp; env.PREVIEW_DOMAIN != ''
+        run: |
+          npm install -g surge
+          surge teardown &quot;$PREVIEW_DOMAIN&quot; || true
 </code></pre>
 <p>You can copy it to the <code>.github/workflows/</code> directory of the R package’s Git
 repository and commit/push it via Git. Within a few minutes, the package site
 should be ready at <code>https://user.github.io/pkg/</code>, where <code>user</code> is your GitHub
 username, and <code>pkg</code> is the repository name, e.g.,
 <a href="https://yihui.github.io/litedown/">https://yihui.github.io/litedown/</a>.</p>
+<p>The workflow also deploys a preview of the site for each pull request to
+<a href="https://surge.sh">surge.sh</a> at <code>https://USER-REPO-pr-N.surge.sh</code> (<code>N</code> is the
+pull request number, and the domain is lowercased with special characters
+replaced by <code>-</code>), and posts the URL as a comment on the pull request. The
+preview is updated on every push, so you can check how your changes look before
+merging. To enable it, create a free surge.sh account, run <code>surge token</code> to get a
+token, and save it as the repository secret <code>SURGE_TOKEN</code> (under <code>Settings</code> →
+<code>Secrets and variables</code> → <code>Actions</code>). The preview steps are skipped when the
+secret is absent, as well as for pull requests from forks, which cannot access
+secrets. The preview is removed by the <code>teardown</code> job of the same workflow when
+the pull request is closed (or its branch is deleted).</p>
 <p>The action <code>yihui/actions/litedown-site</code> supports a few options that you can configure
 under the <code>with</code> field. In the above example workflow, we used the option
 <code>site-dir</code>. Below are the options currently supported:</p>
 <ul>
 <li>
-<p><code>site-dir</code>: Directory of the site source (default: <code>site</code>).</p>
+<p><code>site-dir</code>: Directory in which the site is built (it holds both the site source and the output) (default: <code>site</code>).</p>
 </li>
 <li>
 <p><code>pkg-root</code>: Root directory of the R package in the repository (default: <code>.</code>).</p>
-</li>
-<li>
-<p><code>exclude</code>: Pages to be excluded (filenames separated by spaces) (default: <code>code.Rmd</code>).</p>
 </li>
 <li>
 <p><code>cleanup</code>: Command to clean up the site directory before publishing, e.g., you can delete the <code>.Rmd</code> source files (default: <code>rm -f *.Rmd *.yml _*</code>).</p>
@@ -6750,45 +7656,20 @@ under the <code>with</code> field. In the above example workflow, we used the op
 <p><code>repo-fields</code>: Additional DESCRIPTION fields to include in the <code>PACKAGES</code> index when <code>repo: true</code> (space- or comma-separated), passed to the <code>fields</code> argument of <code>tools::write_PACKAGES()</code>. For example, use <code>Revision</code> to surface a recorded git commit (default: ``).</p>
 </li>
 </ul>
-<p>The options <code>site-dir</code> and <code>exclude</code> are passed to the <code>output</code> and <code>exclude</code>
-arguments of <code>pkg_site()</code> (<a class="cross-ref-sec" href="#sec:pkg-site-fun">8.4.2</a>), respectively, except that
-<code>exclude</code> takes filenames separated by spaces here, e.g., <code>exclude: 'code.Rmd news.Rmd'</code>. For <code>pkg-root</code>, the action changes to this directory (or the
+<p>The option <code>site-dir</code> is passed to the <code>output</code> argument of <code>pkg_site()</code>
+(<a class="cross-ref-sec" href="#sec:pkg-site-fun">8.4.2</a>). For <code>pkg-root</code>, the action changes to this directory (or the
 subdirectory containing <code>DESCRIPTION</code>) before calling <code>pkg_site()</code>. The <code>cleanup</code>
 option allows you to run a command before publishing the site, e.g., you can
 delete the <code>.Rmd</code> source and <code>.yml</code> config files.</p>
 <p>By default, the site is built under the <code>site/</code> directory of the package. If you
 change this path, please remember to adjust the <code>path</code> option for the
 <code>actions/upload-pages-artifact</code> action accordingly.</p>
-<h4 id="sec:package-playground"><span class="section-number">8.4.3.1</span> Package playground</h4>
-<p>The site template also includes a <code>playground/</code> subpage, which provides an
-interactive R playground powered by <a href="https://r-wasm.org">webR</a>. It installs
-<strong>litedown</strong> and its dependencies in the browser and lets users write and run R
-code or render R Markdown documents without a server or a local R installation
-(yes, it works on your mobile device, too!).</p>
-<p>The playground can be customized by adding a <code>playground/</code> directory to the
-package root, which <code>pkg_site()</code> copies into <code>site/playground/</code>. The following
-files are recognized:</p>
-<ul>
-<li>
-<p><code>_default.Rmd</code> (or <code>_default.R</code>): the content pre-loaded in the editor when
-the playground opens. The <code>.Rmd</code> version is tried first; if it does not
-exist, the <code>.R</code> version is tried.</p>
-</li>
-<li>
-<p><code>setup.R</code>: an R script executed once in the webR session after packages are
-installed. It is a good place to install/load the package under
-documentation<sup class="footnote-ref"><a href="#fn-08-site-2" id="fnref-08-site-2" data-footnote-ref>13</a></sup> and define any helpers that users might need.</p>
-</li>
-</ul>
-<p>If the package has an <code>examples/</code> directory, the <code>.Rmd</code>/<code>.R</code> files under it will
-show up in the “Load example…” dropdown of the playground. Selecting an
-example loads its source into the editor.</p>
 <div class="chapter-after side side-right">
 </div>
-</div>
-<div class="chapter body" data-source="/home/runner/work/litedown/litedown/docs/A-misc.Rmd">
+</article>
+<article class="chapter" data-source="book/A-misc.Rmd">
 <div class="chapter-before side side-right">
-<p><a href="https://github.com/yihui/litedown/edit/main//home/runner/work/litedown/litedown/docs/A-misc.Rmd">Edit this chapter</a> on GitHub</p>
+<p><a href="https://github.com/yihui/litedown/edit/main/book/A-misc.Rmd">Edit this chapter</a> on GitHub</p>
 </div>
 <h1 id="chp:appendix" class="appendix">Appendix</h1>
 <h1 id="apd:misc"><span class="section-number main-number">A</span> Miscellaneous Topics</h1>
@@ -6837,7 +7718,7 @@ mark('foo.md', output = NA)  # text
 mark('foo.md', output = 'latex')  # text (LaTeX code)
 </code></pre>
 <p>If the input is a file and the <code>output</code> argument takes a file extension (one of
-<code>.html</code>, <code>.xml</code>, <code>.man</code>, <code>.markdown</code>, <code>.md</code>, <code>.txt</code>, or <code>.tex</code>),<sup class="footnote-ref"><a href="#fn-a-misc-1" id="fnref-a-misc-1" data-footnote-ref>14</a></sup>
+<code>.html</code>, <code>.xml</code>, <code>.man</code>, <code>.markdown</code>, <code>.md</code>, <code>.txt</code>, or <code>.tex</code>),<sup class="footnote-ref"><a href="#fn-a-misc-1" id="fnref-a-misc-1" data-footnote-ref>15</a></sup>
 you will get a file output with the same base name as the input file. The <code>.pdf</code>
 extension can also be used if you want to convert Markdown to LaTeX, and then
 render LaTeX to PDF. For example:</p>
@@ -6852,19 +7733,19 @@ the intermediate Markdown text for the target output format, e.g.,</p>
 <p>Depending on the target output format, the intermediate Markdown may be
 different, e.g., for <code>html</code> output, the default graphical device is PNG, whereas
 for <code>latex</code> output, the default device is PDF.</p>
-<p><a class="cross-ref-tab" href="#tab:input-output">6</a> provides a summary of the above rules.</p>
+<p><a class="cross-ref-tab" href="#tab:input-output">8</a> provides a summary of the above rules.</p>
 <div class="table" id="tab:input-output">
 <div class="caption">
-<p><span class="ref-number-tab">6</span> The returned value for different combinations of <code>input</code>
+<p><span class="ref-number-tab">8</span> The returned value for different combinations of <code>input</code>
 and <code>output</code> arguments of <code>mark()</code> / <code>fuse()</code>.</p>
 </div>
 <table>
 <thead>
 <tr>
-<th>function</th>
+<th>Function</th>
 <th><code>input</code></th>
 <th><code>output</code></th>
-<th>returned value</th>
+<th>Returned value</th>
 </tr>
 </thead>
 <tbody>
@@ -6950,7 +7831,7 @@ avoid using the same base filename for two <code>.Rmd</code> and <code>.md</code
 their output files will overwrite each other.</p>
 <div class="chapter-after side side-right">
 </div>
-</div>
+</article>
 <section class="footnotes" data-footnotes>
 <ol>
 <li id="fn-1">
@@ -7008,31 +7889,39 @@ you use the RStudio visual editor to edit Markdown documents, the footnote
 numbers will be automatically generated and updated when new footnotes are
 inserted before existing footnotes. <a href="#fnref-03-syntax-4" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="9" aria-label="Back to reference 9">↩</a></p>
 </li>
+<li id="fn-05-assets-1">
+<p>From my testing, a 200-page book takes about one second to
+render. I have also seen a 1000-page report take more than 20 seconds. It
+depends on the elements in the document. For example, long code blocks,
+tables, paragraphs, deep/long lists, and elements with many children are
+relatively slow to fragment. Pages containing a lot of these elements can be
+slow to render. <a href="#fnref-05-assets-1" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="10" aria-label="Back to reference 10">↩</a></p>
+</li>
 <li id="fn-06-widgets-1">
 <p>See
 <a href="https://github.com/rstudio/DT/issues/1080">rstudio/DT#1080</a> for a funny
 story about <code>eval()</code>. Speaking of square pegs, perhaps we can rename <code>eval</code>
-to <code>oval</code> (<code>const oval = eval;</code>)? Oval pegs should fit round holes better. <a href="#fnref-06-widgets-1" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="10" aria-label="Back to reference 10">↩</a></p>
+to <code>oval</code> (<code>const oval = eval;</code>)? Oval pegs should fit round holes better. <a href="#fnref-06-widgets-1" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="11" aria-label="Back to reference 11">↩</a></p>
 </li>
 <li id="fn-06-widgets-2">
 <p>My younger son kept repeating this sentence from his audio book
 last year. I asked him why plain oatmeal is a bowl of sadness, but he never
 told me. As a lazy dad, I’m counting on my 9-month old daughter to tell me
-someday. <a href="#fnref-06-widgets-2" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="11" aria-label="Back to reference 11">↩</a></p>
+someday. <a href="#fnref-06-widgets-2" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="12" aria-label="Back to reference 12">↩</a></p>
 </li>
 <li id="fn-08-site-1">
 <p>Remember that you can cache time-consuming code chunks to make the
-rendering faster. <a href="#fnref-08-site-1" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="12" aria-label="Back to reference 12">↩</a></p>
+rendering faster. <a href="#fnref-08-site-1" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="13" aria-label="Back to reference 13">↩</a></p>
 </li>
 <li id="fn-08-site-2">
 <p>To install the development version of a package,
 <a href="https://docs.r-universe.dev/install/binaries.html">r-universe.dev</a> can be
-helpful. <a href="#fnref-08-site-2" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="13" aria-label="Back to reference 13">↩</a></p>
+helpful. <a href="#fnref-08-site-2" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="14" aria-label="Back to reference 14">↩</a></p>
 </li>
 <li id="fn-a-misc-1">
 <p>Note that the format name <code>commonmark</code> and the extension
 <code>.markdown</code> are for CommonMark output. It should be rare that you need to
-convert Markdown input to CommonMark output, but it is possible anyway. <a href="#fnref-a-misc-1" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="14" aria-label="Back to reference 14">↩</a></p>
+convert Markdown input to CommonMark output, but it is possible anyway. <a href="#fnref-a-misc-1" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="15" aria-label="Back to reference 15">↩</a></p>
 </li>
 </ol>
 </section>
@@ -7043,30 +7932,32 @@ R package version 2.4.1, <a href="https://geobosh.github.io/rbibutils/">https://
 </p>
 <p id="ref-R-litedown">Xie Y (2026).
 <em>litedown: A Lightweight Version of R Markdown</em>.
-R package version 0.11.7, <a href="https://github.com/yihui/litedown">https://github.com/yihui/litedown</a>. 
+R package version 0.11.22, <a href="https://github.com/yihui/litedown">https://github.com/yihui/litedown</a>. 
 </p>
 <p id="ref-R-xfun">Xie Y (2026).
 <em>xfun: Supporting Functions for Packages Maintained by Yihui Xie</em>.
-R package version 0.61.4, <a href="https://github.com/yihui/xfun">https://github.com/yihui/xfun</a>. 
+R package version 0.62.6, <a href="https://github.com/yihui/xfun">https://github.com/yihui/xfun</a>. 
 </p>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/sidenotes.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/appendix.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/toc-highlight.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/copy-button.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/heading-anchor.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/pages.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/chapter-toc.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/external-link.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/right-quote.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/key-buttons.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/callout.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/tabsets.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/combine/npm/katex@0.19.0/dist/katex.min.js,npm/katex@0.19.0/dist/contrib/auto-render.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/render-katex.min.js" defer></script>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/sidenotes.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/appendix.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/toc-highlight.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/copy-button.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/heading-anchor.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/pages.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/chapter-toc.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/external-link.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/right-quote.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/key-buttons.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/callout.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/tabsets.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/combine/npm/katex@0.19.1/dist/katex.min.js,npm/katex@0.19.1/dist/contrib/auto-render.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/render-katex.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/pele@1.12.0/dist/pele.global.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/render-pele.min.js" defer></script>
 </body>
 </html>

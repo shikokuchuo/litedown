@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en-US">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="generator" content="litedown 0.11.7">
+<meta name="generator" content="litedown 0.11.22">
 <title>News</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/default.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/article.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/copy-button.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/heading-anchor.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/pages.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/site.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/css/prism-xcode.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/article.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/copy-button.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/heading-anchor.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/pages.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/site.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/css/prism-xcode.min.css">
 </head>
 <body>
-<nav><p><a href="index.html">Home</a>
-<a href="articles.html">Articles</a>
+<nav class="site-nav"><p><a href="index.html">Home</a>
 <a href="examples.html">Examples</a>
 <a href="manual.html">Manual</a>
 <a href="news.html">News</a>
 <a href="book/">Book</a>
-<a href="playground/">Playground</a></p></nav>
-<div class="frontmatter">
+<a href="playground/">Playground</a>
+<a href="https://github.com/yihui/litedown/" class="right"><img src="https://cdn.jsdelivr.net/npm/@primer/octicons@19/build/svg/mark-github-24.svg" alt="GitHub" class="no-invert" /></a></p></nav>
+<header class="frontmatter">
 <div class="title"><h1>News</h1></div>
-</div>
-<div class="body">
-<div id="TOC">
+
+
+
+</header>
+<main>
+<article class="">
+<nav id="TOC">
 <ul>
 <li><a href="#sec:litedown-0-12">litedown 0.12</a></li>
 <li><a href="#sec:litedown-0-11">litedown 0.11</a></li>
@@ -40,14 +44,44 @@
 <li><a href="#sec:litedown-0-2">litedown 0.2</a></li>
 <li><a href="#sec:litedown-0-1">litedown 0.1</a></li>
 </ul>
-</div>
+</nav>
 <h2 id="sec:litedown-0-12" class="unnumbered">litedown 0.12</h2>
 <ul>
 <li>
-<p>The Markdown backend has been changed from the <strong>commonmark</strong> package to a copy of ‘cmark-gfm’ bundled with <strong>litedown</strong>, with our own patches and extensions. Features that used to be emulated with fragile text processing in R (LaTeX math, superscript/subscript/strikethrough, raw content blocks, and inline attributes on links and images) are now handled directly by the Markdown parser, which is faster and more reliable, especially for large documents and documents with multibyte (e.g., CJK) characters. This also fixes several long-standing rendering bugs (#33, <a href="https://github.com/yihui/litedown/issues/135">#135</a>, <a href="https://github.com/yihui/litedown/issues/139">#139</a>). The <strong>commonmark</strong> package is no longer a dependency (#141, <a href="https://github.com/yihui/litedown/issues/142">#142</a>, <a href="https://github.com/yihui/litedown/issues/143">#143</a>). Rendering output is essentially unchanged, with one minor exception: superscript, subscript, and strikethrough now require the delimiters to “hug” their content (e.g., <code>a^b^</code> works, but <code>a ^ b ^</code> no longer produces a superscript), consistent with how <code>*emphasis*</code> works.</p>
+<p>The Markdown backend has been changed from the <strong>commonmark</strong> package to a copy of ‘cmark-gfm’ bundled with <strong>litedown</strong>, with our own patches and extensions. Features that used to be emulated with fragile text processing in R (LaTeX math, superscript/subscript/strikethrough, raw content blocks, and inline attributes on links and images) are now handled directly by the Markdown parser, which is faster and more reliable, especially for large documents and documents with multibyte (e.g., CJK) characters. This also fixes several long-standing rendering bugs (<a href="https://github.com/yihui/litedown/issues/33">#33</a>, <a href="https://github.com/yihui/litedown/issues/135">#135</a>, <a href="https://github.com/yihui/litedown/issues/139">#139</a>). The <strong>commonmark</strong> package is no longer a dependency (<a href="https://github.com/yihui/litedown/issues/141">#141</a>, <a href="https://github.com/yihui/litedown/issues/142">#142</a>, <a href="https://github.com/yihui/litedown/issues/143">#143</a>). Rendering output is essentially unchanged, with one minor exception: superscript, subscript, and strikethrough now require the delimiters to “hug” their content (e.g., <code>a^b^</code> works, but <code>a ^ b ^</code> no longer produces a superscript), consistent with how <code>*emphasis*</code> works.</p>
 </li>
 <li>
 <p>Added a new function <code>pkg_site()</code>, which builds a website for an R package from a template bundled with <strong>litedown</strong> (under <code>system.file('site', package = 'litedown')</code>). The template contains pages for the package description, news, manual, vignettes, examples, and source code, and can be customized page by page (a file that already exists in the site directory will not be overwritten by the template). Previously this template only lived in the GitHub Action <a href="https://github.com/yihui/actions/tree/main/litedown-site">https://github.com/yihui/actions/tree/main/litedown-site</a>, which means a package site could not be built locally, and the template could get out of sync with the installed version of <strong>litedown</strong>.</p>
+</li>
+<li>
+<p><code>pkg_desc(type = &quot;dl&quot;)</code> now generates a compact description in a sidebar (a fenced Div with the classes <code>side</code> and <code>side-right</code>): the <code>Description</code> and <code>Suggests</code> fields are omitted, and <code>URL</code> and <code>BugReports</code> are merged into a <code>Links</code> field with short text links (e.g., <code>Browse source code</code> and <code>Report a bug</code>) instead of long bare URLs. The site template of <code>pkg_site()</code> uses it to put the description in a sidebar on the home page when the package has a <code>README.md</code>.</p>
+</li>
+<li>
+<p><code>pkg_desc(type = &quot;dl&quot;)</code> shows only the authors (role <code>aut</code>) by default when the author list is long, and the full list is hidden behind <code>&lt;details&gt;</code>. The site template’s footer is now a plain <code>_footer.md</code> (instead of <code>_footer.Rmd</code>), in which <code>$authors$</code> and <code>$version$</code> are substituted by <code>pkg_site()</code>.</p>
+</li>
+<li>
+<p>Added a new <code>pele</code> engine to draw diagrams with <a href="https://pele.run">Pele</a>, a lightweight renderer for the Mermaid syntax. It takes the same input as the <code>mermaid</code> engine (and shares its implementation), and the required JS is added to the HTML output automatically. The diagrams in the <strong>litedown</strong> documentation (<a href="https://pkg.yihui.org/litedown/book/">https://pkg.yihui.org/litedown/book/</a>) now use it.</p>
+</li>
+<li>
+<p>Added a function <code>pkg_articles()</code> to list package vignettes (it was previously inlined in the <code>articles.Rmd</code> template of <code>pkg_site()</code>). <code>pkg_manual()</code>, <code>pkg_articles()</code>, and <code>pkg_examples()</code> gain an argument <code>groups</code> to group help pages, vignettes, or examples, which defaults to the subfield <code>manual</code>, <code>articles</code>, or <code>examples</code> of <code>site</code> in <code>_litedown.yml</code> (similar to <code>_pkgdown.yml</code>), e.g., <code>site: {manual: {Sites: [pkg_site, &quot;roam*&quot;]}}</code> (group titles are the keys). Items not in any group are listed under <code>Other</code>, and a name that matches nothing is an error. Help pages with the keyword <code>internal</code> (e.g., re-exports) are listed only if a group names them. Without groups, the default listing is unchanged.</p>
+</li>
+<li>
+<p>Moved the vignette <code>slides</code> to the example <code>examples/045-snap-slides.Rmd</code>, which is rendered on the package site: <a href="https://pkg.yihui.org/litedown/examples/045-snap-slides.html">https://pkg.yihui.org/litedown/examples/045-snap-slides.html</a></p>
+</li>
+<li>
+<p><code>fuse_site()</code> with <code>rebuild: &quot;outdated&quot;</code> (the default) now also rebuilds pages when <code>_litedown.yml</code> is newer than their output files, instead of only comparing each page with its own source file.</p>
+</li>
+<li>
+<p>On the home page of <code>pkg_site()</code>, the <code>Links</code> in the sidebar no longer include the URL of the package site itself (i.e., <code>https://USER.github.io/PKG/</code>, or the field <code>url</code> under <code>site</code> in <code>_litedown.yml</code>), and badges in <code>README.md</code> (between <code>&lt;!-- badges: start --&gt;</code> and <code>&lt;!-- badges: end --&gt;</code>) are placed in the right sidebar.</p>
+</li>
+<li>
+<p>The navigation menu of a package site gets a GitHub icon on the right if the <code>BugReports</code> field points to a GitHub repo.</p>
+</li>
+<li>
+<p>The local cache of the latest version of the jsDelivr assets is now invalidated when <strong>litedown</strong> is upgraded, and actually expires after a week (the age was previously compared in the wrong time units).</p>
+</li>
+<li>
+<p>Fixed a bug that the navigation menu of a website only contained the page being previewed (instead of all pages) when previewing a single file via <code>roam()</code>.</p>
 </li>
 <li>
 <p>Fixed a bug that <code>fuse()</code> (and <code>mark()</code>) failed to compile a <code>.tex</code> file to PDF when the output was in a different directory, because <code>latexmk</code> was not run in the output directory and could not find relative paths in the <code>.tex</code> file such as plot files (thanks, <a href="https://github.com/reedacartwright">@reedacartwright</a>, <a href="https://github.com/yihui/litedown/issues/168">#168</a>).</p>
@@ -60,6 +94,33 @@
 </li>
 <li>
 <p>The chunk option <code>echo</code> can now take a numeric vector of line numbers to select which lines of the source code to display, e.g., <code>echo = -1</code> hides the first line, and <code>echo = 2:3</code> shows only the second and third lines (thanks, <a href="https://github.com/jangorecki">@jangorecki</a>, <a href="https://github.com/yihui/litedown/issues/93">#93</a>).</p>
+</li>
+<li>
+<p>The navigation menu of a site no longer includes <code>doc/index.html</code> (the vignette index of an R package).</p>
+</li>
+<li>
+<p>Added a new function <code>pkg_examples()</code> to list the examples under the <code>examples/</code> directory of a package, so the <code>examples.Rmd</code> page of the <code>pkg_site()</code> template no longer assumes that the site is built in the package root directory.</p>
+</li>
+<li>
+<p><code>pkg_news()</code> now links issue numbers (and <code>@username</code>s) that immediately follow an opening parenthesis, e.g., <code>#1</code> in <code>([#1](https://github.com/yihui/litedown/issues/1), [#2](https://github.com/yihui/litedown/issues/2))</code>.</p>
+</li>
+<li>
+<p>The default stylesheet no longer sets <code>font-size: .9em</code> on <code>body</code>, so body text is slightly larger (about 11%); the relative sizes of elements such as <code>code</code>, footnotes, and captions are unchanged.</p>
+</li>
+<li>
+<p>HTML output now uses <code>&lt;embed&gt;</code> instead of <code>&lt;img&gt;</code> for PDF files included via <code>![](foo.pdf)</code>, and the PDF is base64 encoded when resources are embedded (a <code>?query</code> or <code>#hash</code> in the path is ignored when locating the file, and the <code>#hash</code>, e.g., <code>#page=2</code>, is kept).</p>
+</li>
+<li>
+<p>The default HTML template now uses semantic elements: the frontmatter is wrapped in <code>&lt;header class=&quot;frontmatter&quot;&gt;</code>, the body in <code>&lt;main&gt;&lt;article&gt;</code>, and the TOC is a <code>&lt;nav id=&quot;TOC&quot;&gt;</code> instead of a <code>&lt;div&gt;</code>. The class <code>body</code> is no longer used (use the selector <code>main article</code> in custom CSS instead), the metadata variable <code>body-class</code> now sets the class of <code>&lt;article&gt;</code> (the default is empty), and a new variable <code>body-tag</code> can change the tag. Each chapter of a book is an <code>&lt;article class=&quot;chapter&quot;&gt;</code> (instead of <code>&lt;div class=&quot;chapter body&quot;&gt;</code>). This makes the HTML structure semantically correct. The site menu now has the class <code>site-nav</code>. Also see the new <a href="https://pkg.yihui.org/litedown/examples.html#sec:custom-styles">examples of custom styles</a>, including an interactive page for tweaking the major CSS settings and pages that use stylesheets from the web, and the new book section <a href="https://pkg.yihui.org/litedown/book/#sec:custom-assets">Custom CSS/JS</a> (thanks, <a href="https://github.com/eijoac">@eijoac</a> <a href="https://github.com/eddelbuettel">@eddelbuettel</a>, <a href="https://github.com/yihui/litedown/issues/76">#76</a>).</p>
+</li>
+<li>
+<p>The JavaScript and CSS for paged HTML (<code>pages.js</code> and <code>pages.css</code>) have been improved: lists, block quotes, and other elements can be broken across pages at any level (not only a few tags), keeping their indentation and numbering; widows, orphans, and headings alone at the bottom of a page are avoided; the content is taken from <code>&lt;main&gt;</code> (or <code>&lt;article&gt;</code>, or <code>&lt;body&gt;</code>) and the frontmatter from <code>&lt;header&gt;</code>, which can be changed via the attributes <code>data-pages-root</code> and <code>data-pages-front</code> of <code>&lt;body&gt;</code>; the pagination waits for diagrams to settle and shows its progress, can be triggered by the event <code>pagesjs:paginate</code> (e.g., via the argument <code>wait</code> of <code>xfun::browser_print()</code> to print a page to PDF), and is faster. See the rewritten section <a href="https://pkg.yihui.org/litedown/book/#sec:pages">Paged HTML</a> for details.</p>
+</li>
+<li>
+<p>Added a JS asset <code>nav-highlight.js</code> to highlight the current page in <code>&lt;nav&gt;</code>, which is enabled for sites by default (<a href="https://pkg.yihui.org/litedown/book/#sec:nav-highlight">details</a>).</p>
+</li>
+<li>
+<p>The appearance of the default CSS and several other CSS assets can now be customized via CSS variables such as <code>--accent</code> and <code>--muted-bg</code>, without writing selectors (<a href="https://pkg.yihui.org/litedown/book/#sec:css-variables">details</a>). The <a href="https://pkg.yihui.org/litedown/examples/028-style-playground.html">CSS playground</a> generates these variables, too.</p>
 </li>
 </ul>
 <h2 id="sec:litedown-0-11" class="unnumbered">litedown 0.11</h2>
@@ -167,7 +228,7 @@
 <p>Fixed a bug that inline code expressions (<code>`{lang} expr`</code>) cannot be correctly located when the line has leading spaces that are not meaningful.</p>
 </li>
 <li>
-<p>Deleted vignettes <code>markdown-examples</code> and <code>markdown-output</code>. They are rendered on the package site now: <a href="https://git.yihui.org/litedown/examples/test-options.html">https://git.yihui.org/litedown/examples/test-options.html</a></p>
+<p>Deleted vignettes <code>markdown-examples</code> and <code>markdown-output</code>. They are rendered on the package site now: <a href="https://pkg.yihui.org/litedown/examples/test-options.html">https://pkg.yihui.org/litedown/examples/test-options.html</a></p>
 </li>
 </ul>
 <h2 id="sec:litedown-0-6" class="unnumbered">litedown 0.6</h2>
@@ -317,7 +378,7 @@ graph TD;
 <p>Added the JS asset <a href="https://github.com/yihui/lite.js/blob/main/js/mathjax-config.js"><code>@mathjax-config</code></a> to enable equation numbering by default when the JS math library is set to MathJax (thanks, <a href="https://github.com/hturner">@hturner</a>, <a href="https://github.com/yihui/litedown/issues/32">#32</a>).</p>
 </li>
 <li>
-<p>Set <code>options(bitmapType = 'cairo')</code> in <code>fuse()</code> if <code>capabilities('cairo')</code> is TRUE, which will generate smaller bitmap plot files (e.g., <code>.png</code>) than using <code>quartz</code> or <code>Xlib</code>, and is also a safer option for <code>fuse()</code> to be executed in parallel (rstudio/rmarkdown#2561).</p>
+<p>Set <code>options(bitmapType = 'cairo')</code> in <code>fuse()</code> if <code>capabilities('cairo')</code> is TRUE, which will generate smaller bitmap plot files (e.g., <code>.png</code>) than using <code>quartz</code> or <code>Xlib</code>, and is also a safer option for <code>fuse()</code> to be executed in parallel (<a href="https://github.com/rstudio/rmarkdown/issues/2561">rstudio/rmarkdown#2561</a>).</p>
 </li>
 <li>
 <p>Added a new vignette engine <code>litedown::book</code> to make it possible to build multiple vignettes into a book. To use this engine, declare <code>\VignetteEngine{litedown::book}</code> only in the book index file (e.g., <code>index.Rmd</code>) but not in other book chapter files.</p>
@@ -372,17 +433,20 @@ graph TD;
 <ul>
 <li>Initial CRAN release.</li>
 </ul>
-</div>
+
+</article>
+</main>
 <footer><div class="flex-col">
 <p>Developed by <a href="https://yihui.org">Yihui Xie</a></p>
-<p>Site built with <a href="https://github.com/yihui/litedown">litedown</a> v0.11.7</p>
+<p>Site built with <a href="https://github.com/yihui/litedown">litedown</a> v0.11.22</p>
 </div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/sidenotes.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/appendix.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/toc-highlight.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/copy-button.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/heading-anchor.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.92/js/pages.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/sidenotes.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/appendix.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/toc-highlight.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/copy-button.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/heading-anchor.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/pages.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils@1.14.136/js/nav-highlight.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
 </body>
